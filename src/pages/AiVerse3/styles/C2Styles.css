@@ -1,0 +1,79 @@
+.mask-container {
+  overflow: hidden;
+  display: block;
+}
+
+.reveal-text {
+  display: block;
+  will-change: transform; /* Boosts performance for heavy GSAP movement */
+}
+/* The moving horizontal bar */
+.scanline {
+  width: 100%;
+  height: 100px;
+  z-index: 8;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  opacity: 0.3;
+  position: absolute;
+  bottom: 100%;
+  pointer-events: none;
+  animation: scanlineMove 8s linear infinite;
+}
+
+@keyframes scanlineMove {
+  0% { bottom: 100%; }
+  80% { bottom: 100%; } /* Stays at top for a pause */
+  100% { bottom: -10%; }
+}
+
+.glitch-copy {
+  display: none; /* Hidden until triggered by parent hover/animation if desired */
+}
+
+/* Action Grid Specifics */
+.action-item {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Fluid Typography for the Learn/Experience headers */
+.reveal-text {
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+}
+
+/* Hover effect like the C2 site */
+.action-item:hover .reveal-text {
+  color: #7928ca; /* Transitions to purple on hover */
+  transition: color 0.4s ease;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

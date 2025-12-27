@@ -1,28 +1,60 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import WhoWeAre from './components/WhoWeAre';
-import Timeline from './components/Timeline';
-import Reasons from './components/Reasons';
-import Sponsors from './components/Sponsors';
-import Footer from './components/Footer';
+// Core Engine & Styles
+import SmoothScroll from './shared/SmoothScroll';
+import CustomCursor from './shared/CustomCursor';
+import './styles/C2Styles.css';
 
-export default function AIVerseCyberRed() {
+// Components
+import Sidebar3 from './components/Navigation/Sidebar3';
+import MotionHero from './components/Hero/MotionHero';
+import ParallaxBg from './components/Hero/ParallaxBg';
+import ActionGrid from './components/Experience/ActionGrid';
+import ImageReveal from './components/Experience/ImageReveal';
+import Footer3 from './components/Navigation/Footer3';
+
+export default function AiVerse3() {
   return (
-    <div className="bg-[#050505] min-h-screen text-white font-sans selection:bg-red-600 selection:text-white">
-      {/* Red Ambient Glows */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-red-900/20 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-red-900/10 blur-[120px] rounded-full" />
-      </div>
+    <SmoothScroll>
+      {/* 1. Global Interactive Layer */}
+      <CustomCursor />
+      
+      <div className="relative bg-black min-h-screen selection:bg-[#B7FF00] selection:text-black">
+        {/* 2. Fixed Navigation */}
+        <Sidebar3 />
+        
+        <main className="relative">
+          {/* 3. Background Layer (Deep Parallax) */}
+          <ParallaxBg />
+          
+          {/* 4. Hero Section (Scale & Fade Animation) */}
+          <section id="hero">
+            <MotionHero />
+          </section>
 
-      <Navbar />
-      <Hero />
-      <WhoWeAre />
-      <Timeline />
-      <Reasons />
-      <Sponsors />
-      <Footer />
-    </div>
+          {/* 5. Storytelling Content (The "C2" Narrative Flow) */}
+          <div className="px-5 md:px-10 max-w-7xl mx-auto space-y-20 relative z-10">
+            
+            {/* Cinematic Image Reveal 1 */}
+            <ImageReveal 
+              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=2000" 
+              alt="Neural Networks Visualization" 
+            />
+
+            {/* Masked Text Reveal Section */}
+            <ActionGrid />
+
+            {/* Cinematic Image Reveal 2 */}
+            <ImageReveal 
+              src="https://images.unsplash.com/photo-1620712943543-bcc4628c6750?auto=format&fit=crop&q=80&w=2000" 
+              alt="Cybernetic Interfaces" 
+            />
+            
+          </div>
+
+          {/* 6. High-Contrast Footer (Glitch Effect) */}
+          <Footer3 />
+        </main>
+      </div>
+    </SmoothScroll>
   );
 }
