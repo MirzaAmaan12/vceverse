@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* CRITICAL: These must be set to 100% for h-full to work in React */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;  
+   /* Prevents scrollbars */
+  background-color: #020205; /* Matches your app background */
+}
+
+.form-input {
+  background-color: #0f0f1f;
+  border: 1px solid #7c5cff;
+  color: white;
+  padding: 14px 16px;
+  border-radius: 12px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 15px rgba(124, 92, 255, 0.8);
+  background-color: #15152b;
+}
+/* ===============================
+   GLOBAL FORM STYLES (ALL PAGES)
+   =============================== */
+/* ===============================
+   FORCE FORM TEXT COLOR (GLOBAL)
+   =============================== */
+
+input,
+textarea,
+select,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  color: #ffffff !important;          /* 🔥 FORCE */
+  background-color: #0f0f1f !important;
+  border: 1px solid #7c5cff !important;
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: #b8b8d4 !important;
+}
+
+/* Focus */
+input:focus,
+textarea:focus,
+select:focus {
+  color: #ffffff !important;
+  background-color: #15152b !important;
+}
+
+/* Chrome autofill */
+input:-webkit-autofill {
+  -webkit-text-fill-color: #ffffff !important;
+}
+::selection {
+  background-color: #7C5CFF;
+  color: white;
+}
+
+/* Custom scrollbar for that premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020205;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e2e;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7C5CFF;
+}
+
+@layer base {
+  body {
+    @apply bg-[#F0F4F8] text-slate-900 antialiased overflow-x-hidden;
+  }
+}
+
+/* The "Holographic Liquid" Animation for the Hero and Sections */
+@keyframes aurora-swirl {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(10%, 5%) rotate(120deg) scale(1.2); }
+  66% { transform: translate(-5%, 15%) rotate(240deg) scale(0.9); }
+  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+
+.animate-liquid {
+  animation: aurora-swirl 25s infinite linear;
+}
+
+/* Custom Hide Scrollbar for Cinematic feel but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glassmorphism utility */
+.glass-card {
+  @apply bg-white/40 backdrop-blur-2xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.03)];
+}
+
+/*  ai verse 3.0 */
