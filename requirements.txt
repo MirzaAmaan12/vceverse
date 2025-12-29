@@ -1,3 +1,5 @@
 framer-motion
 Install Dependencies: Run npm install framer-motion lucide-react clsx tailwind-merge.
 lenis
+lucide-react
+react-icons
