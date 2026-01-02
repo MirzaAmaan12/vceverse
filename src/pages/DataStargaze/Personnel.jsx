@@ -10,18 +10,12 @@ export default function Personnel() {
         </h2>
 
         {/* LEADERS: Stacks on mobile, Side-by-side on Desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-12">
-          {STARGAZE_DATA.leaders.map((p, i) => (
-            <ProfileCard key={i} person={p} size="large" glow="#7C5CFF" />
-          ))}
-        </div>
-
-        {/* TEAM: 2 columns on mobile, 4 on Desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {STARGAZE_DATA.team.map((p, i) => (
-            <ProfileCard key={i} person={p} size="small" glow="#00F2FE" />
-          ))}
-        </div>
+          {/* All personnel in a single horizontal row with large boxes */}
+          <div className="flex items-center justify-center gap-6 overflow-x-auto pb-4 md:pb-8">
+            {[...STARGAZE_DATA.leaders, ...STARGAZE_DATA.team].map((p, i) => (
+              <ProfileCard key={i} person={p} size="large" glow="#00F2FE" />
+            ))}
+          </div>
       </div>
     </section>
   );
@@ -37,7 +31,16 @@ function ProfileCard({ person, size, glow }) {
       
       <div className={`${size === 'large' ? 'w-24 h-24 md:w-40 md:h-40' : 'w-20 h-20'} rounded-full border border-white/20 p-1 mb-4 md:mb-6`}>
         <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden">
-           <div className="text-[10px] text-white/10 font-mono">PHOTO</div>
+            {person.image ? (
+              <img
+                src={person.image}
+                alt={person.name}
+                className={`w-full h-full object-cover rounded-full transform ${person.name === 'Dr. Thanveer Jahan' ? 'scale-150 md:scale-150' : 'scale-125 md:scale-125'}`}
+                style={{ objectPosition: 'center' }}
+              />
+            ) : (
+              <div className="text-[10px] text-white/10 font-mono">PHOTO</div>
+            )}
         </div>
       </div>
 

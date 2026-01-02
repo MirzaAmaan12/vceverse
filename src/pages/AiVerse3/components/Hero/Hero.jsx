@@ -38,13 +38,13 @@ export default function Hero() {
 
         {/* Robot Visual Placeholder (Centered) */}
 {/* // Inside Hero.jsx */}
-<div className="relative z-10 w-full max-w-2xl mx-auto flex justify-center items-center">
+{/* <div className="relative z-10 w-full max-w-2xl mx-auto flex justify-center items-center">
   <img 
     src="https://img.freepik.com/premium-photo/white-robot-head-with-blue-eyes-dark-background-generative-ai_1034449-65123.jpg" 
     alt="AI Visual" 
     className="w-[300px] md:w-[450px] object-contain drop-shadow-[0_0_50px_rgba(34,211,238,0.3)]"
   />
-</div>
+</div> */}
       </div>
 
       {/* Floating Info Cards (Glassmorphism) */}

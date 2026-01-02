@@ -3,7 +3,7 @@ import { eventDetails } from '../../data/eventData';
 
 export default function EventStream() {
   return (
-    <section className="py-20 px-6 max-w-4xl mx-auto">
+    <section id="schedule" className="py-20 px-6 max-w-4xl mx-auto">
       <h3 className="text-[#F0FF42] font-black uppercase tracking-[0.3em] text-xs mb-10 text-center">
         Event Agenda & Highlights
       </h3>

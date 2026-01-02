@@ -1,4 +1,13 @@
 // src/pages/DataStargaze/content.js
+import thanveerImg from './public/thanveerjahan.jpg';
+import salimImg from './public/salim.jpg';
+import swethaImg from './public/swetha.jpg';
+import prakashImg from './public/prakash .jpg';
+import img1 from './public/stargaze/img1.jpg';
+import img2 from './public/stargaze/img2.jpg';
+import img3 from './public/stargaze/img3.jpg';
+import img4 from './public/stargaze/img4.png';
+
 export const STARGAZE_DATA = {
   title: "DATASTARGAZE",
   date: "27th - 28th Dec 2021",
@@ -37,15 +46,13 @@ export const STARGAZE_DATA = {
   },
 
   leaders: [
-    { name: "Prof. S.S.V.N. Sharma", role: "Chief Guest", desc: "Dean of Academy, Vaagdevi Group" },
-    { name: "Dr. Thanveer Jahan", role: "Convener", desc: "HOD-CSE (AI & ML) Dept" }
+    { name: "Principal Dr K Prakash", role: "Principal", desc: "Vaagdevi College of Engineering", image: prakashImg },
+    { name: "Dr. Thanveer Jahan", role: "Convener", desc: "HOD-CSE (AI & ML) Dept", image: thanveerImg },
   ],
 
   team: [
-    { name: "Mr. G. Praveen", role: "Resource Person", topic: "Data Visualization" },
-    { name: "Mr. Tharun", role: "Resource Person", topic: "AI & ML" },
-    { name: "Mrs. A. Swetha", role: "Coordinator" },
-    { name: "Mr. Salim Jiwani", role: "Coordinator" }
+    { name: "Mrs. A. Swetha", role: "Coordinator", image: swethaImg },
+    { name: "Mr. Salim Jiwani", role: "Coordinator", image: salimImg }
   ],
 
   agenda: [
@@ -57,9 +64,9 @@ export const STARGAZE_DATA = {
   ],
 
   images: [
-    { url: "/assets/stargaze/img1.jpg", title: "Workshop Session" },
-    { url: "/assets/stargaze/img2.jpg", title: "Cultural Event" },
-    { url: "/assets/stargaze/img3.jpg", title: "Prize Distribution" },
-    { url: "/assets/stargaze/img4.jpg", title: "Team Group" }
+    { url: img4, title: "Workshop Session" },
+    { url: img2, title: "Cultural Event" },
+    { url: img3, title: "technical session " },
+    { url: img4, title: "Team Group" }
   ]
 };

@@ -7,6 +7,7 @@ import About from './components/EventInfo/About';
 // Replace Schedule with EventStream for the archive look
 import EventStream from './components/Experience/EventStream'; 
 import Gallery from './components/Gallery/Gallery';
+import Personnel from './Personnel';
 
 export default function AiVerse3() {
   return (
@@ -26,6 +27,9 @@ export default function AiVerse3() {
         
         {/* Full Image Gallery */}
         <Gallery />
+
+        {/* Foundation Team */}
+        <Personnel />
       </main>
       
       {/* Institutional Footer */}

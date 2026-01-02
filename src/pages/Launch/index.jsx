@@ -6,7 +6,7 @@ export default function Launch() {
 
   const menuItems = [
     { label: "Data Stargaze", path: "/data-stargaze", primary: false },
-    { label: "AI Verse ", path: "/ai-verse", primary: false },
+    // { label: "AI Verse ", path: "/ai-verse", primary: false },
     { label: "AI Verse 2.0", path: "/ai-verse-2", primary: false },
     { label: "AI Verse 3.0", path: "/ai-verse-3", primary: false },
     { label: "AI Verse 4.0", path: "/ai-verse-4", primary: true },
@@ -46,9 +46,9 @@ export default function Launch() {
             animate={{ opacity: 1, x: 0 }}
             className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none"
           >
-            <span className="text-white">AI </span>
+            <span className="text-white"> EXPLORE </span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7C5CFF] to-[#D1C4FF]">
-              VERSE
+              
             </span>
           </motion.h1>
           <div className="h-1 w-16 md:w-24 bg-[#7C5CFF] mt-4 rounded-full shadow-[0_0_15px_#7C5CFF]" />

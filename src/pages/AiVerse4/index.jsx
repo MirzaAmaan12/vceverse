@@ -6,6 +6,7 @@ import Agenda from "./Agenda";
 import Sessions from "./Sessions";
 import Feedback from "./Feedback";
 import Register from "./Register";
+import Personnel from "./Personnel";
 
 export default function AiVerse4() {
   return (
@@ -14,7 +15,8 @@ export default function AiVerse4() {
       <main>
         <section id="home"><Home /></section>
         <section id="event"><Event /></section>
-        <section id="speakers"><Speakers /></section>
+        <section id="foundation"><Personnel /></section>
+        {/* <section id="speakers"><Speakers /></section> */}
         <section id="agenda"><Agenda /></section>
         <section id="sessions"><Sessions /></section>
         <section id="feedback"><Feedback /></section>

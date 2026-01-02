@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import { eventDetails } from '../../data/eventData';
-import { Mail, MapPin, Globe, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Globe, Instagram, Linkedin, Twitter, ArrowRight, Home } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -22,13 +23,28 @@ export default function Footer() {
         </motion.div>
       </div>
 
-      {/* 2. Institutional Branding & Links */}
+      {/* 2. Navigation Buttons (New Section) */}
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center gap-6 mb-20">
+        <Link 
+          to="/" 
+          className="flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all"
+        >
+          <Home size={14} /> Back to Launch
+        </Link>
+
+        <Link 
+          to="/ai-verse-4" 
+          className="flex items-center gap-2 px-10 py-4 rounded-full bg-gradient-to-r from-[#FF4D00] to-[#FF8700] text-white text-xs font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(255,77,0,0.3)] hover:scale-105 transition-all"
+        >
+          Explore AI-VERSE 4.0 <ArrowRight size={14} />
+        </Link>
+      </div>
+
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/5 pb-12">
         <div className="col-span-1 md:col-span-2">
           <h3 className="text-2xl font-black tracking-tighter text-white mb-4 uppercase italic">AI-VERSE 3.0</h3>
           <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-sm">
             Organized by the {eventDetails.organizer}. {eventDetails.institution} (Autonomous). 
-            A vision where AI is an integral component of the digital infrastructure.
           </p>
           <div className="flex gap-4">
             <Instagram size={20} className="text-white/30 hover:text-[#22D3EE] cursor-pointer transition-colors" />
@@ -42,22 +58,19 @@ export default function Footer() {
           <ul className="space-y-4 text-sm text-white/60 font-medium">
             <li className="flex items-center gap-3"><MapPin size={16} className="text-[#22D3EE]" /> {eventDetails.location}</li>
             <li className="flex items-center gap-3"><Mail size={16} className="text-[#22D3EE]" /> info@vaagdevi.edu.in</li>
-            <li className="flex items-center gap-3"><Globe size={16} className="text-[#22D3EE]" />  <a href="https://www.vaagdevi.edu.in" target="_blank" rel="noreferrer">www.vaagdevi.edu.in</a></li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-[#F0FF42] uppercase text-[10px] font-black tracking-widest mb-6">Quick Links</h4>
           <ul className="space-y-4 text-sm text-white/60 font-medium">
-            <li className="hover:text-[#22D3EE] cursor-pointer transition-colors">Event Mission</li>
-            <li className="hover:text-[#22D3EE] cursor-pointer transition-colors">Resource Persons</li>
-            <li className="hover:text-[#22D3EE] cursor-pointer transition-colors">Gallery</li>
-            <li className="hover:text-[#22D3EE] cursor-pointer transition-colors">Institution Portal</li>
+            <li><a href="#hero" className="hover:text-[#22D3EE] transition-colors">Hero</a></li>
+            <li><a href="#about" className="hover:text-[#22D3EE] transition-colors">About</a></li>
+            <li><a href="#schedule" className="hover:text-[#22D3EE] transition-colors">Schedule</a></li>
           </ul>
         </div>
       </div>
 
-      {/* 3. Copyright Bar */}
       <div className="max-w-7xl mx-auto mt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-white/20 uppercase font-black tracking-widest">
         <p>© 2025 VAAGDEVI COLLEGE OF ENGINEERING. ALL RIGHTS RESERVED.</p>
         <p>POWERED BY CSE (AI & ML) DEPARTMENT</p>

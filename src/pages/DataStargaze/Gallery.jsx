@@ -31,7 +31,7 @@ export default function Gallery() {
                <img 
                  src={img.url} 
                  alt={img.title} 
-                 className="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700 grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100" 
+                 className="w-full h-full object-cover opacity-100 group-hover:opacity-100 transition-all duration-700  group-hover:grayscale-0 scale-110 group-hover:scale-100" 
                />
             </div>
 

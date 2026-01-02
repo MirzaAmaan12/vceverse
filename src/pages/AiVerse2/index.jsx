@@ -4,6 +4,7 @@ import AboutSection from './components/AboutSection';
 import './AiVerse2.css';
 import { useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
+import Personnel from './Personnel';
 
 // Assets
 import posterImg from './assets/poster.jpg'; 
@@ -112,6 +113,11 @@ const AiVerse2 = () => {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* --- FOUNDATION TEAM --- */}
+      <section className="section-container pb-8">
+        <Personnel />
       </section>
 
       {/* --- NAVIGATION FOOTER --- */}

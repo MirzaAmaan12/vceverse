@@ -97,3 +97,40 @@ img {
     line-height: 1;
   }
 }
+/* Add this to the top of your aiv3.css */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fix for the Hero Title scaling */
+#aiv3 .hero-title {
+  font-size: clamp(3rem, 15vw, 10rem); /* This makes text responsive but prevents it from breaking */
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Ensure the glass card in the footer doesn't overflow on small screens */
+@media (max-width: 640px) {
+  #aiv3 .glass-card {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Add this for the background title effect */
+.stroke-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure the hero container behaves on mobile */
+@media (max-width: 768px) {
+  #hero h1 {
+    margin-bottom: -30px; /* Tighter fit for mobile */
+  }
+  
+  .glass-card {
+    width: 90vw;
+  }
+}
+
