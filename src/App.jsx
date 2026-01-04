@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Launch from "./pages/Launch";
+import Home from "./pages/Home";
+import Explore from "./pages/Explore";
 import DataStargaze from "./pages/DataStargaze";
 import AiVerse2 from "./pages/AiVerse2";
 import AiVerse3 from "./pages/AiVerse3";
@@ -9,7 +10,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Launch />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
         <Route path="/data-stargaze" element={<DataStargaze />} />
         <Route path="/ai-verse-2" element={<AiVerse2 />} />
         <Route path="/ai-verse-3" element={<AiVerse3 />} />
