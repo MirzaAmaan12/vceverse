@@ -49,7 +49,7 @@ const SplitPoster = ({ src, alt, isSplitting, zIndex, scale, shouldFade }) => {
       >
         <div className="absolute top-0 left-0 w-[200%] h-full">
           {src ? (
-            <img src={src} alt={alt} className="w-full h-full object-contain" draggable={false} />
+            <img src={src} alt="" className="w-full h-full object-contain" draggable={false} />
           ) : (
             <div className="w-full h-full bg-black" aria-hidden="true" />
           )}
@@ -69,7 +69,7 @@ const SplitPoster = ({ src, alt, isSplitting, zIndex, scale, shouldFade }) => {
       >
         <div className="absolute top-0 left-[-100%] w-[200%] h-full">
           {src ? (
-            <img src={src} alt={alt} className="w-full h-full object-contain" draggable={false} />
+            <img src={src} alt="" className="w-full h-full object-contain" draggable={false} />
           ) : (
             <div className="w-full h-full bg-black" aria-hidden="true" />
           )}
@@ -84,7 +84,6 @@ const SplitPoster = ({ src, alt, isSplitting, zIndex, scale, shouldFade }) => {
 const AiVerseIntro = ({ onComplete }) => {
   const [step, setStep] = useState(0);
   const [posters, setPosters] = useState([null, null, null, null]);
-  const [loadingText, setLoadingText] = useState("Loading posters…");
   const [hasSeenBefore, setHasSeenBefore] = useState(false);
   const postersRef = useRef([null, null, null, null]);
 
@@ -96,7 +95,6 @@ const AiVerseIntro = ({ onComplete }) => {
 
   const ensurePosterLoaded = async (index) => {
     if (postersRef.current[index]) return postersRef.current[index];
-    setLoadingText(`Loading poster ${index + 1} of 4…`);
     const mod = await posterLoaders[index]();
     const src = mod.default;
     await preloadImage(src);
@@ -121,25 +119,25 @@ const AiVerseIntro = ({ onComplete }) => {
       if (cancelled) return;
 
       // Step 0: Show 1.0 briefly
-      await new Promise((r) => setTimeout(r, 400));
+      await new Promise((r) => setTimeout(r, 1200));
 
       // Step 1: Ensure 2.0 is ready, then split 1.0
       await ensurePosterLoaded(1);
       if (cancelled) return;
       setStep(1);
-      await new Promise((r) => setTimeout(r, 800));
+      await new Promise((r) => setTimeout(r, 1500));
 
       // Step 2: Ensure 3.0 is ready, then split 2.0
       await ensurePosterLoaded(2);
       if (cancelled) return;
       setStep(2);
-      await new Promise((r) => setTimeout(r, 800));
+      await new Promise((r) => setTimeout(r, 1500));
 
       // Step 3: Ensure 4.0 is ready, then split 3.0 and fade all posters
       await ensurePosterLoaded(3);
       if (cancelled) return;
       setStep(3);
-      await new Promise((r) => setTimeout(r, 800));
+      await new Promise((r) => setTimeout(r, 1500));
 
       // Step 4: Fade complete, wait 0.5 sec then zoom 4.0
       setStep(4);
@@ -151,7 +149,7 @@ const AiVerseIntro = ({ onComplete }) => {
 
       // Step 6: Exit
       setStep(6);
-      await new Promise((r) => setTimeout(r, 450));
+      await new Promise((r) => setTimeout(r, 400));
       localStorage.setItem('aiverse-intro-seen', 'true');
       onComplete();
     };
@@ -164,7 +162,7 @@ const AiVerseIntro = ({ onComplete }) => {
 
   return (
     <motion.div 
-      className="fixed inset-0 z-[100] bg-black flex items-start justify-center overflow-hidden"
+      className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden"
       initial={{ opacity: 1 }}
       animate={step === 6 ? { opacity: 0 } : { opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -185,15 +183,19 @@ const AiVerseIntro = ({ onComplete }) => {
 
       {/* Loading overlay until first poster is ready */}
       {!posters[0] && (
-        <div className="absolute inset-0 z-[105] flex flex-col items-center justify-center text-center px-6 bg-black">
-          <div className="w-12 h-12 rounded-full border-2 border-white/20 border-t-cyan-400 animate-spin" />
-          <p className="mt-4 text-white/80 text-sm font-semibold tracking-wide">{loadingText}</p>
-          <p className="mt-1 text-white/40 text-xs">This can take a moment on mobile data</p>
+        <div className="absolute inset-0 z-[110] flex flex-col items-center justify-center text-center px-6 bg-black">
+          <div className="relative">
+            <div className="w-16 h-16 rounded-full border-4 border-white/10 border-t-cyan-400 animate-spin" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-cyan-400/20 blur-sm" />
+            </div>
+          </div>
         </div>
       )}
       
       {/* Container for Posters - Center aligned */}
-      <div className="relative h-[85vh] w-auto aspect-[2/3] max-w-[90vw] flex items-center justify-center mx-auto">
+      <div className="relative z-20 flex items-center justify-center w-full h-full pointer-events-none">
+        <div className="relative h-[70vh] md:h-[80vh] aspect-[2/3] flex items-center justify-center">
         
         {/* Poster 4.0 (Base Layer) - Appears at step 3, fades posters, waits 1s, then zooms */}
         <motion.div
@@ -204,7 +206,7 @@ const AiVerseIntro = ({ onComplete }) => {
         >
           <div className="relative w-full h-full overflow-hidden shadow-2xl">
             {posters[3] ? (
-              <img src={posters[3]} alt="AI Verse 4.0" className="w-full h-full object-contain" draggable={false} />
+              <img src={posters[3]} alt="" className="w-full h-full object-contain" draggable={false} />
             ) : (
               <div className="w-full h-full bg-black" aria-hidden="true" />
             )}
@@ -215,7 +217,6 @@ const AiVerseIntro = ({ onComplete }) => {
         {step >= 2 && (
           <SplitPoster 
             src={posters[2]} 
-            alt="AI Verse 3.0" 
             isSplitting={step >= 3} 
             zIndex={30}
             scale={0.8}
@@ -227,7 +228,6 @@ const AiVerseIntro = ({ onComplete }) => {
         {step >= 1 && (
           <SplitPoster 
             src={posters[1]} 
-            alt="AI Verse 2.0" 
             isSplitting={step >= 2} 
             zIndex={40}
             scale={0.9}
@@ -239,7 +239,6 @@ const AiVerseIntro = ({ onComplete }) => {
         {posters[0] && (
           <SplitPoster 
             src={posters[0]} 
-            alt="AI Verse 1.0" 
             isSplitting={step >= 1} 
             zIndex={50}
             scale={1.0}
@@ -247,6 +246,7 @@ const AiVerseIntro = ({ onComplete }) => {
           />
         )}
 
+        </div>
       </div>
     </motion.div>
   );
