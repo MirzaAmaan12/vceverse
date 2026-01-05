@@ -20,7 +20,7 @@ export default function DataStargaze() {
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,#1A1A2E_0%,#020205_100%)] z-0" />
       <FloatingGradientBg />
       
-      <div className="relative z-10">
+      <div className="relative z-10 pt-16 sm:pt-0">
         <StargazeHero />
         {/* <Stats /> */}
         

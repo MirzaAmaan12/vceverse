@@ -304,15 +304,15 @@ const HeroSection = ({ onExploreClick }) => (
     initial="hidden"
     animate="visible"
   >
-    <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex flex-col items-center justify-center">
+    <div className="relative z-10 text-center px-6 max-w-6xl mx-auto flex flex-col items-center justify-center">
       <motion.h2
-        className="text-[clamp(0.9rem,1.8vw,1.3rem)] text-cyan-300 font-extrabold mb-3 tracking-[0.14em] drop-shadow-lg"
+        className="text-[clamp(1rem,2vw,1.5rem)] text-cyan-300 font-extrabold mb-2 tracking-[0.14em] drop-shadow-lg"
         variants={welcomeVariants}
         style={{ letterSpacing: '0.14em' }}
       >WELCOME TO</motion.h2>
       <div className="relative flex flex-col items-center">
         <motion.h1
-          className="text-[clamp(2rem,6vw,4.5rem)] font-black leading-[0.95] mb-4 bg-gradient-to-r from-cyan-300 via-green-300 to-blue-400 bg-clip-text text-transparent animate-gradient-glow drop-shadow-[0_0_34px_rgba(0,242,254,0.45)]"
+          className="text-[clamp(3rem,9vw,7rem)] font-black leading-[0.9] mb-3 bg-gradient-to-r from-cyan-300 via-green-300 to-blue-400 bg-clip-text text-transparent animate-gradient-glow drop-shadow-[0_0_34px_rgba(0,242,254,0.45)]"
           style={{ WebkitTextStroke: '1px rgba(0,242,254,0.14)' }}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -328,7 +328,7 @@ const HeroSection = ({ onExploreClick }) => (
         />
       </div>
       <motion.p
-        className="text-[clamp(0.9rem,1.8vw,1.2rem)] leading-relaxed text-gray-200 mt-6 mb-8 font-medium max-w-3xl"
+        className="text-[clamp(1rem,2vw,1.4rem)] leading-relaxed text-gray-200 mt-4 mb-6 font-medium max-w-4xl"
         variants={subtitleVariants}
       >WHERE AI MEETS THE POWER OF QUANTUM REALITY</motion.p>
       
@@ -378,7 +378,7 @@ const HeroSection = ({ onExploreClick }) => (
 );
 
 const Footer = () => (
-  <footer className="w-full absolute bottom-0 left-0 bg-slate-950 border-t border-white/10 py-8 px-6">
+  <footer className="w-full bg-slate-950 border-t border-white/10 py-8 px-6">
     <div className="max-w-7xl mx-auto text-center text-gray-400 text-sm">
       <p>© 2026 CSE (AI&ML) Department - Vaagdevi College of Engineering</p>
       <p>Innovating the future with AI & Machine Learning</p>
