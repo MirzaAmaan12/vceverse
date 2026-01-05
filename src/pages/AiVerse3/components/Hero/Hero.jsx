@@ -33,7 +33,7 @@ export default function Hero() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-[15vw] md:text-[12vw] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 uppercase italic"
         >
-          {eventDetails.title}
+          AI-VERSE 3.0
         </motion.h1>
 
         {/* Robot Visual Placeholder (Centered) */}

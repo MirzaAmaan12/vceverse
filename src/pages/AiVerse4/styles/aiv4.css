@@ -1,0 +1,133 @@
+/* Scoped to AI-VERSE 4.0 */
+#aiv4 {
+  --bg-dark: #0A0B1A;
+  --bg-card: rgba(15, 17, 41, 0.7);
+  --accent-cyan: #22D3EE;
+  --accent-lime: #F0FF42;
+  --purple-grad: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
+  
+  background-color: var(--bg-dark);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Glassmorphism Utility */
+#aiv4 .glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+/* Neon Glow Effect */
+#aiv4 .glow-cyan {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+/* Specific styling for the Department title */
+#aiv4 .dept-title {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  #aiv4 .hero-title {
+    font-size: 18vw;
+    letter-spacing: -0.05em;
+  }
+  
+  #aiv4 .glass-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Scrollbar Styling to match Navy/Cyan theme */
+#aiv4::-webkit-scrollbar {
+  width: 8px;
+}
+
+#aiv4::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+#aiv4::-webkit-scrollbar-thumb {
+  background: #22D3EE;
+  border-radius: 10px;
+}
+
+#aiv4::-webkit-scrollbar-thumb:hover {
+  background: #F0FF42;
+}
+
+/* Fix padding for mobile */
+@media (max-width: 640px) {
+  #aiv4 section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  #aiv4 h1 {
+    font-size: 22vw !important;
+  }
+
+  /* Force vertical layout for stats */
+  #aiv4 .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Navigation adjustments */
+  #aiv4 nav button {
+    display: none;
+  }
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  #aiv4 h1 {
+    font-size: 14vw !important;
+    line-height: 1;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fix for the Hero Title scaling */
+#aiv4 .hero-title {
+  font-size: clamp(3rem, 15vw, 10rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Ensure the glass card in the footer doesn't overflow on small screens */
+@media (max-width: 640px) {
+  #aiv4 .glass-card {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Add this for the background title effect */
+.stroke-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure the hero container behaves on mobile */
+@media (max-width: 768px) {
+  #hero h1 {
+    margin-bottom: -30px;
+  }
+  
+  .glass-card {
+    width: 90vw;
+  }
+}

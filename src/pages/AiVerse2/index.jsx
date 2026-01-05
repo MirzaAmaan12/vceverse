@@ -32,6 +32,7 @@ const galleryImages = [
 const AiVerse2 = () => {
   const navigate = useNavigate();
   const [showPoster, setShowPoster] = useState(false);
+  const [posterLoading, setPosterLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -63,7 +64,10 @@ const AiVerse2 = () => {
             </div>
             
             <button 
-              onClick={() => setShowPoster(true)}
+              onClick={() => {
+                setPosterLoading(true);
+                setShowPoster(true);
+              }}
               className="mt-4 text-orange-500 text-xs font-bold underline tracking-widest uppercase cursor-pointer hover:text-orange-400 transition-colors"
             >
               View Official Event Poster
@@ -140,23 +144,44 @@ const AiVerse2 = () => {
       {showPoster && (
         <div 
           className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
-          onClick={() => setShowPoster(false)}
+          onClick={() => {
+            setShowPoster(false);
+            setPosterLoading(false);
+          }}
         >
           <div className="relative max-w-4xl w-full animate-fadeIn" onClick={(e) => e.stopPropagation()}>
             <button 
               className="absolute -top-12 right-0 text-white text-3xl hover:text-orange-500 transition-colors"
-              onClick={() => setShowPoster(false)}
+              onClick={() => {
+                setShowPoster(false);
+                setPosterLoading(false);
+              }}
             >
               &times; Close
             </button>
-            <img 
-              src={posterImg} 
-              alt="AI-VERSE 2.0 Official Poster" 
-              className="w-full h-auto rounded-lg shadow-2xl border border-white/10"
-              onError={(e) => {
-                e.target.src = "https://placehold.co/800x1200/0b1121/white?text=Poster+Image+Not+Found+In+Assets";
-              }}
-            />
+
+            <div className="relative w-full rounded-lg shadow-2xl border border-white/10 bg-black/40 overflow-hidden">
+              {posterLoading && (
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/40">
+                  <div className="w-10 h-10 rounded-full border-2 border-white/20 border-t-orange-500 animate-spin" />
+                  <p className="mt-3 text-white/80 text-xs font-bold tracking-widest uppercase">Loading poster…</p>
+                </div>
+              )}
+
+              <img 
+                src={posterImg} 
+                alt="AI-VERSE 2.0 Official Poster" 
+                className="w-full max-h-[82vh] object-contain"
+                onLoad={() => setPosterLoading(false)}
+                onError={(e) => {
+                  setPosterLoading(false);
+                  e.target.src = "https://placehold.co/800x1200/0b1121/white?text=Poster+Image+Not+Found+In+Assets";
+                }}
+                loading="eager"
+                decoding="async"
+                draggable={false}
+              />
+            </div>
           </div>
         </div>
       )}

@@ -35,9 +35,9 @@ const Navbar = ({ onHomeClick }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={onHomeClick}
-          className="px-6 py-2 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 text-white font-semibold text-sm hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+          className="px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 text-white font-semibold text-sm hover:shadow-lg hover:shadow-purple-500/50 transition-all"
         >
-          ← Back to Home
+          Back to Home
         </motion.button>
       </div>
     </nav>
@@ -92,35 +92,35 @@ export default function Explore() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none" />
 
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col p-6 sm:p-12 md:p-16 lg:p-20 pt-24 relative z-10">
+        <div className="flex-1 flex flex-col p-6 sm:p-8 md:p-12 lg:p-16 pt-24 relative z-10">
           
           {/* Title Section */}
-          <header className="mb-8 md:mb-12">
+          <header className="mb-6 md:mb-8">
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none"
             >
               <span className="text-white">EXPLORE</span>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7C5CFF] to-[#D1C4FF]"> EVENTS</span>
             </motion.h1>
-            <div className="h-1 w-16 md:w-24 bg-[#7C5CFF] mt-4 rounded-full shadow-[0_0_15px_#7C5CFF]" />
+            <div className="h-1 w-16 md:w-20 bg-[#7C5CFF] mt-3 rounded-full shadow-[0_0_15px_#7C5CFF]" />
           </header>
 
           {/* Two Column Layout */}
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10 items-start">
             
             {/* Featured Poster Section */}
-            <div className="lg:w-full">
+            <div className="w-full lg:w-1/2 flex-shrink-0">
               <FeaturedExplorePoster />
             </div>
 
             {/* Events List Section */}
-            <div className="lg:w-full mt-12">
+            <div className="w-full lg:w-1/2 flex-shrink-0">
               <motion.h3
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-2xl md:text-3xl font-bold text-white mb-6"
+                className="text-xl md:text-2xl font-bold text-white mb-5"
               >
                 All Events
               </motion.h3>

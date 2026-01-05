@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AiVerseIntro from "../components/AiVerseIntro";
 
 // Animation Variants
 const navbarVariants = {
@@ -264,8 +265,8 @@ const FloatingGradientBackground = () => (
 );
 
 const Logo = () => (
-  <div className="flex items-center gap-5">
-    <div className="w-20 h-20 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0 shadow-2xl border-4 border-cyan-400">
+  <div className="flex items-center gap-4">
+    <div className="w-16 h-16 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0 shadow-2xl border-4 border-cyan-400">
       <img 
         src="/logo.png" 
         alt="Vaagdevi College Logo" 
@@ -273,8 +274,12 @@ const Logo = () => (
       />
     </div>
     <div className="flex flex-col leading-none">
-      <span className="text-3xl font-extrabold text-white tracking-wide drop-shadow-lg">CSE (AI&ML)</span>
-      <span className="text-lg text-cyan-200 font-medium mt-1 drop-shadow">Vaagdevi College of Engineering</span>
+      <span className="text-[clamp(1rem,1.8vw,1.4rem)] font-extrabold text-white tracking-wide drop-shadow-lg">
+        CSE (AI&ML)
+      </span>
+      <span className="text-[clamp(0.75rem,1.3vw,0.9rem)] text-cyan-200 font-medium mt-1 drop-shadow">
+        Vaagdevi College of Engineering
+      </span>
     </div>
   </div>
 );
@@ -294,21 +299,21 @@ const Navbar = () => (
 
 const HeroSection = ({ onExploreClick }) => (
   <motion.section
-    className="relative min-h-screen pt-24 flex flex-col justify-center items-center overflow-hidden"
+    className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden"
     variants={heroVariants}
     initial="hidden"
     animate="visible"
   >
-    <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex flex-col items-center">
+    <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex flex-col items-center justify-center">
       <motion.h2
-        className="text-2xl md:text-4xl text-cyan-300 font-extrabold mb-4 tracking-widest drop-shadow-lg"
+        className="text-[clamp(0.9rem,1.8vw,1.3rem)] text-cyan-300 font-extrabold mb-3 tracking-[0.14em] drop-shadow-lg"
         variants={welcomeVariants}
-        style={{ letterSpacing: '0.18em' }}
+        style={{ letterSpacing: '0.14em' }}
       >WELCOME TO</motion.h2>
       <div className="relative flex flex-col items-center">
         <motion.h1
-          className="text-[3.5rem] md:text-[6rem] lg:text-[8rem] font-black leading-none mb-4 bg-gradient-to-r from-cyan-300 via-green-300 to-blue-400 bg-clip-text text-transparent animate-gradient-glow drop-shadow-[0_0_40px_rgba(0,242,254,0.5)]"
-          style={{ WebkitTextStroke: '2px rgba(0,242,254,0.15)' }}
+          className="text-[clamp(2rem,6vw,4.5rem)] font-black leading-[0.95] mb-4 bg-gradient-to-r from-cyan-300 via-green-300 to-blue-400 bg-clip-text text-transparent animate-gradient-glow drop-shadow-[0_0_34px_rgba(0,242,254,0.45)]"
+          style={{ WebkitTextStroke: '1px rgba(0,242,254,0.14)' }}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
@@ -323,9 +328,9 @@ const HeroSection = ({ onExploreClick }) => (
         />
       </div>
       <motion.p
-        className="text-2xl md:text-3xl text-gray-200 mt-8 mb-12 font-medium"
+        className="text-[clamp(0.9rem,1.8vw,1.2rem)] leading-relaxed text-gray-200 mt-6 mb-8 font-medium max-w-3xl"
         variants={subtitleVariants}
-      >Innovating the Future with <span className="relative text-cyan-300 font-bold underline underline-offset-4 decoration-cyan-400 animate-pulse">Artificial Intelligence</span> & <span className="text-cyan-300 font-bold">Machine Learning</span></motion.p>
+      >WHERE AI MEETS THE POWER OF QUANTUM REALITY</motion.p>
       
       {/* Centered Explore Button */}
       <motion.button
@@ -335,7 +340,7 @@ const HeroSection = ({ onExploreClick }) => (
         whileHover="hover"
         whileTap="tap"
         onClick={onExploreClick}
-        className="relative px-10 py-4 rounded-full bg-gradient-to-r from-purple-500 via-purple-600 to-cyan-400 text-white font-bold text-lg shadow-2xl transition-all flex items-center gap-3 justify-center overflow-hidden border-2 border-cyan-300/50 hover:border-cyan-300 group"
+        className="relative px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-500 via-purple-600 to-cyan-400 text-white font-bold text-base shadow-2xl transition-all flex items-center gap-3 justify-center overflow-hidden border-2 border-cyan-300/50 hover:border-cyan-300 group"
       >
         {/* Animated background gradient */}
         <motion.div
@@ -352,7 +357,7 @@ const HeroSection = ({ onExploreClick }) => (
           transition={{ repeat: Infinity, duration: 2 }}
         />
         
-        <motion.span className="relative text-white font-bold text-lg tracking-wide">
+        <motion.span className="relative text-white font-bold text-base tracking-wide">
           EXPLORE NOW
         </motion.span>
         
@@ -383,6 +388,7 @@ const Footer = () => (
 
 export default function Home() {
   const navigate = useNavigate();
+  const [showIntro, setShowIntro] = useState(true);
 
   // Move useEffect here
   useEffect(() => {
@@ -402,10 +408,15 @@ export default function Home() {
         <title>CSE (AI&ML) - Artificial Intelligence & Machine Learning</title>
         <meta
           name="description"
-          content="Welcome to CSE (AI&ML) Department - Innovating the future with Artificial Intelligence and Machine Learning."
+          content="Welcome to CSE (AI&ML) Department - WHERE AI MEETS THE POWER OF QUANTUM REALITY"
         />
         <meta name="keywords" content="CSE, AIML, AI, ML, Artificial Intelligence, Machine Learning, AI Verse, Events" />
       </Helmet>
+
+      <AnimatePresence>
+        {showIntro && <AiVerseIntro onComplete={() => setShowIntro(false)} />}
+      </AnimatePresence>
+
       <div className="relative min-h-screen bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 text-white overflow-hidden">
         {/* Full page floating gradient background */}
         <FloatingGradientBackground />

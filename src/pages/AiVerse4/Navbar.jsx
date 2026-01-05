@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
   { label: "Home", id: "home" },
   { label: "Event", id: "event" },
-  { label: "Speakers", id: "speakers" },
+  { label: "Foundation", id: "speakers" },
   { label: "Agenda", id: "agenda" },
   { label: "Sessions", id: "sessions" },
   { label: "Feedback", id: "feedback" },
@@ -90,13 +90,6 @@ export default function Navbar() {
               </button>
             ))}
           </div>
-
-          <button
-            onClick={() => scrollTo("register")}
-            className="px-4 md:px-6 py-2 rounded-full bg-gradient-to-r from-[#00F2FE] to-[#8B5CF6] text-[#020205] font-bold text-xs md:text-sm uppercase tracking-wider hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] transition-all duration-300"
-          >
-            Join Us
-          </button>
 
           <button className="lg:hidden text-[#00F2FE]" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d={isMobileMenuOpen ? "M18 6L6 18M6 6l12 12" : "M3 12h18M3 6h18M3 18h18"} /></svg>

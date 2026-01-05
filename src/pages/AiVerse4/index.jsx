@@ -1,33 +1,37 @@
-import Navbar from "./Navbar";
-import Home from "./Home";
-import Event from "./Event";
-import Speakers from "./Speakers";
-import Agenda from "./Agenda";
-import Sessions from "./Sessions";
-import Feedback from "./Feedback";
-import Register from "./Register";
-import Personnel from "./Personnel";
-import Footer from "./components/Footer";
-import { FloatingGradientBg } from "../../components/FloatingGradientBg";
+import React from 'react';
+import './styles/aiv4.css';
+import NavbarAIV4 from './components/Layout/NavbarAIV4';
+import FooterAIV4 from './components/Layout/FooterAIV4'; 
+import About from './components/EventInfo/About';
+import EventStream from './components/EventInfo/EventStream'; 
+import Personnel from './Personnel';
+import Home from './Home';
+import { FloatingGradientBg } from '../../components/FloatingGradientBg';
 
 export default function AiVerse4() {
   return (
-    <div className="relative bg-[#0B0B0B] text-white selection:bg-[#7C5CFF] selection:text-black">
+    <div id="aiv4" className="relative min-h-screen bg-[#0A0B1A]">
       <FloatingGradientBg />
-      <div className="relative z-10">
-      <Navbar />
-      <main>
-        <section id="home"><Home /></section>
-        <section id="event"><Event /></section>
-        <section id="foundation"><Personnel /></section>
-        {/* <section id="speakers"><Speakers /></section> */}
-        <section id="agenda"><Agenda /></section>
-        <section id="sessions"><Sessions /></section>
-        <section id="feedback"><Feedback /></section>
-        <section id="register"><Register /></section>
+      
+      {/* Navbar stays fixed at the top */}
+      <NavbarAIV4 />
+      
+      <main className="w-full relative z-10">
+        {/* Hero Section */}
+        <Home />
+        
+        {/* Institutional & Purpose Details */}
+        <About />
+        
+        {/* Sequential event highlights */}
+        <EventStream />
+
+        {/* Foundation Team */}
+        <Personnel />
       </main>
-      <Footer />
-      </div>
+      
+      {/* Institutional Footer */}
+      <FooterAIV4 />
     </div>
   );
 }

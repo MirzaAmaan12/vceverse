@@ -2,7 +2,7 @@
 import thanveerImg from './public/thanveerjahan.jpg';
 import salimImg from './public/salim.jpg';
 import swethaImg from './public/swetha.jpg';
-import prakashImg from './public/prakash .jpg';
+import prakashImg from './public/prakash.jpg';
 import img1 from './public/stargaze/img1.jpg';
 import img2 from './public/stargaze/img2.jpg';
 import img3 from './public/stargaze/img3.jpg';

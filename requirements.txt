@@ -1,5 +1,2 @@
-framer-motion
-framer-motion lucide-react clsx tailwind-merge.
-lenis
-lucide-react
-react-icons
+# This is a React/Vite project
+# JavaScript dependencies are in package.json

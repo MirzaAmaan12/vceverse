@@ -1,16 +1,15 @@
 import React from 'react';
 import ImageSlideshow from '../../../../components/ImageSlideshow';
+import img1 from '../../public/img1.jpeg';
+import img2 from '../../public/img2.jpeg';
+import img3 from '../../public/img3.jpeg';
+import img4 from '../../public/img4.jpeg';
+import img5 from '../../public/img5.jpeg';
+import img6 from '../../public/img6.jpeg';
+import img7 from '../../public/img7.jpeg';
 
 // Gallery images for AI-VERSE 3.0
-const galleryImages = [
-  "/src/pages/AiVerse3/assets/gallery/event-1.jpg",
-  "/src/pages/AiVerse3/assets/gallery/event-2.jpg",
-  "/src/pages/AiVerse3/assets/gallery/event-3.jpg",
-  "/src/pages/AiVerse3/assets/gallery/event-4.jpg",
-  "/src/pages/AiVerse3/assets/gallery/event-5.jpg",
-  "/src/pages/AiVerse3/assets/gallery/event-6.jpg",
-  "/src/pages/AiVerse3/assets/gallery/event-7.jpg",
-];
+const galleryImages = [img1, img2, img3, img4, img5, img6, img7];
 
 export default function Gallery() {
   return (
@@ -19,14 +18,5 @@ export default function Gallery() {
       eventName="AI-VERSE 3.0"
       title="Event Gallery"
     />
-  );
-}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-              <p className="text-white text-sm font-medium">{image.alt}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
   );
 }
