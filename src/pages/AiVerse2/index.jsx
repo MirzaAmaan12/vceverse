@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Personnel from './Personnel';
 import ImageSlideshow from '../../components/ImageSlideshow';
 import { FloatingGradientBg } from '../../components/FloatingGradientBg';
+import BackButton from '../../components/BackButton';
 
 // Assets
 import posterImg from './assets/poster.jpg';
@@ -41,25 +42,26 @@ const AiVerse2 = () => {
   return (
     <div className="aiverse2-wrapper relative">
       <FloatingGradientBg />
+      <BackButton />
       <div className="relative z-10">
       {/* --- HERO SECTION --- */}
-      <section className="hero text-center pt-24 pb-16 px-4">
+      <section className="hero text-center pt-20 sm:pt-24 pb-12 sm:pb-16 px-3 sm:px-4">
         <div className="max-w-4xl mx-auto">
-          <p className="text-orange-500 font-bold uppercase tracking-[0.2em] mb-4">
+          <p className="text-orange-500 font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-3 sm:mb-4 text-xs sm:text-sm">
             {aiverse2Data.college}
           </p>
-          <div className="inline-block px-4 py-1 border border-white/20 rounded-full mb-8">
-            <h2 className="text-xs md:text-sm text-gray-300 tracking-wide font-medium">
+          <div className="inline-block px-3 sm:px-4 py-1 border border-white/20 rounded-full mb-6 sm:mb-8">
+            <h2 className="text-[10px] sm:text-xs md:text-sm text-gray-300 tracking-wide font-medium">
               {aiverse2Data.department}
             </h2>
           </div>
           
-          <h1 className="text-6xl md:text-9xl font-black italic mt-2 glow-text tracking-tighter uppercase">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black italic mt-2 glow-text tracking-tighter uppercase">
             {aiverse2Data.title}
           </h1>
           
-          <div className="mt-10 flex flex-col items-center gap-4">
-            <div className="bg-orange-600 text-white px-8 py-3 rounded-sm font-black transform -skew-x-12 shadow-lg shadow-orange-600/20">
+          <div className="mt-6 sm:mt-10 flex flex-col items-center gap-3 sm:gap-4">
+            <div className="bg-orange-600 text-white px-5 sm:px-8 py-2 sm:py-3 rounded-sm font-black transform -skew-x-12 shadow-lg shadow-orange-600/20 text-sm sm:text-base">
                <span className="inline-block skew-x-12">{aiverse2Data.dates}</span>
             </div>
             
@@ -68,7 +70,7 @@ const AiVerse2 = () => {
                 setPosterLoading(true);
                 setShowPoster(true);
               }}
-              className="mt-4 text-orange-500 text-xs font-bold underline tracking-widest uppercase cursor-pointer hover:text-orange-400 transition-colors"
+              className="mt-3 sm:mt-4 text-orange-500 text-[10px] sm:text-xs font-bold underline tracking-widest uppercase cursor-pointer hover:text-orange-400 transition-colors"
             >
               View Official Event Poster
             </button>
@@ -80,25 +82,25 @@ const AiVerse2 = () => {
       <AboutSection />
 
       {/* --- TRACKS SECTION --- */}
-      <section className="section-container">
-        <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+      <section className="section-container px-3 sm:px-6">
+        <div className="bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
             <div>
-              <h3 className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-2">Curriculum</h3>
-              <h2 className="text-4xl font-bold">Workshop Tracks</h2>
+              <h3 className="text-orange-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-1 sm:mb-2">Curriculum</h3>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Workshop Tracks</h2>
             </div>
-            <p className="text-gray-400 max-w-md text-sm italic">
+            <p className="text-gray-400 max-w-md text-xs sm:text-sm italic">
               Focused on the transition from traditional Machine Learning to modern Generative AI architectures.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {aiverse2Data.tracks.map((track, i) => (
-              <div key={i} className="group p-6 bg-white/5 rounded-xl border border-white/5 hover:border-orange-500/50 transition-all duration-300">
-                <div className="text-orange-500 font-black text-2xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">
+              <div key={i} className="group p-4 sm:p-6 bg-white/5 rounded-xl border border-white/5 hover:border-orange-500/50 transition-all duration-300">
+                <div className="text-orange-500 font-black text-xl sm:text-2xl mb-3 sm:mb-4 opacity-30 group-hover:opacity-100 transition-opacity">
                   0{i + 1}
                 </div>
-                <h4 className="text-xl font-bold group-hover:text-orange-500 transition-colors">
+                <h4 className="text-base sm:text-lg md:text-xl font-bold group-hover:text-orange-500 transition-colors">
                   {track}
                 </h4>
               </div>

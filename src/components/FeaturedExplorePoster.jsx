@@ -114,31 +114,31 @@ const FeaturedExplorePoster = () => {
           </div>
 
           {/* Content section */}
-          <div className="relative z-10 p-8 md:p-12">
+          <div className="relative z-10 p-4 sm:p-6 md:p-8 lg:p-12">
             {/* Event title */}
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-2 sm:mb-3">
               AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">VERSE 4.0</span>
             </h2>
 
             {/* Tagline */}
-            <p className="text-cyan-300 text-lg md:text-xl font-medium mb-5">
+            <p className="text-cyan-300 text-sm sm:text-base md:text-lg lg:text-xl font-medium mb-3 sm:mb-5">
               WHERE AI MEETS THE POWER OF QUANTUM REALITY
             </p>
 
             {/* Animated date */}
-            <div className="flex items-center gap-2 mb-6">
-              <span className="text-white/80 text-lg">📅</span>
-              <span className="text-2xl font-bold text-white">
-                21<sup>st</sup>, 22<sup>nd</sup> & 23<sup>rd</sup> January 2026
+            <div className="flex items-center gap-2 mb-4 sm:mb-6">
+              <span className="text-white/80 text-base sm:text-lg">📅</span>
+              <span className="text-lg sm:text-xl md:text-2xl font-bold text-white">
+                2<sup>nd</sup>, 3<sup>rd</sup> & 4<sup>th</sup> February 2026
               </span>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               {/* Register Button */}
               <button
                 onClick={() => navigate("/ai-verse-4")}
-                className="px-10 py-5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 font-bold text-lg shadow-lg hover:shadow-cyan-400/50 transition-all flex items-center justify-center gap-2"
+                className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 font-bold text-sm sm:text-base md:text-lg shadow-lg hover:shadow-cyan-400/50 transition-all flex items-center justify-center gap-2"
               >
                 <span>Register Now</span>
                 <span>→</span>
@@ -147,7 +147,7 @@ const FeaturedExplorePoster = () => {
               {/* View Details Button */}
               <button
                 onClick={() => navigate("/ai-verse-4")}
-                className="px-10 py-5 rounded-full border-2 border-cyan-400/50 text-cyan-400 font-bold text-lg hover:bg-cyan-400/10 transition-all"
+                className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full border-2 border-cyan-400/50 text-cyan-400 font-bold text-sm sm:text-base md:text-lg hover:bg-cyan-400/10 transition-all"
               >
                 View Event Details
               </button>

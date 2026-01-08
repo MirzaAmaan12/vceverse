@@ -10,6 +10,7 @@ import EventCategorization from './EventCategorization'; // NEW
 import Gallery from './Gallery';
 import Footer from './components/Footer';
 import { FloatingGradientBg } from '../../components/FloatingGradientBg';
+import BackButton from '../../components/BackButton';
 
 export default function DataStargaze() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function DataStargaze() {
       {/* Background Pulse */}
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,#1A1A2E_0%,#020205_100%)] z-0" />
       <FloatingGradientBg />
+      <BackButton />
       
       <div className="relative z-10 pt-16 sm:pt-0">
         <StargazeHero />

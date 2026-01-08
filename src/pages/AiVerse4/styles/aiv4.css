@@ -16,30 +16,66 @@
   background: var(--bg-card);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  border-radius: 12px;
+}
+
+@media (min-width: 640px) {
+  #aiv4 .glass-card {
+    border-radius: 16px;
+  }
 }
 
 /* Neon Glow Effect */
 #aiv4 .glow-cyan {
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+}
+
+@media (min-width: 640px) {
+  #aiv4 .glow-cyan {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
 }
 
 /* Specific styling for the Department title */
 #aiv4 .dept-title {
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent-cyan);
 }
 
+@media (min-width: 640px) {
+  #aiv4 .dept-title {
+    letter-spacing: 0.2em;
+  }
+}
+
 /* Responsive Typography */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   #aiv4 .hero-title {
-    font-size: 18vw;
-    letter-spacing: -0.05em;
+    font-size: 14vw;
+    letter-spacing: -0.03em;
+  }
+  
+  #aiv4 .glass-card {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  #aiv4 .hero-title {
+    font-size: 16vw;
+    letter-spacing: -0.04em;
   }
   
   #aiv4 .glass-card {
     padding: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) {
+  #aiv4 .hero-title {
+    font-size: 18vw;
+    letter-spacing: -0.05em;
   }
 }
 
@@ -62,24 +98,35 @@
 }
 
 /* Fix padding for mobile */
-@media (max-width: 640px) {
+@media (max-width: 480px) {
+  #aiv4 section {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  #aiv4 h1 {
+    font-size: 15vw !important;
+  }
+
+  /* Force vertical layout for stats */
+  #aiv4 .grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Navigation adjustments */
+  #aiv4 nav button {
+    display: none;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
   #aiv4 section {
     padding-left: 1rem;
     padding-right: 1rem;
   }
   
   #aiv4 h1 {
-    font-size: 22vw !important;
-  }
-
-  /* Force vertical layout for stats */
-  #aiv4 .grid-cols-2 {
-    grid-template-columns: 1fr;
-  }
-
-  /* Navigation adjustments */
-  #aiv4 nav button {
-    display: none;
+    font-size: 18vw !important;
   }
 }
 
@@ -102,7 +149,7 @@ html {
 
 /* Fix for the Hero Title scaling */
 #aiv4 .hero-title {
-  font-size: clamp(3rem, 15vw, 10rem);
+  font-size: clamp(2.5rem, 12vw, 10rem);
   line-height: 0.9;
   text-transform: uppercase;
   font-weight: 900;
@@ -110,9 +157,15 @@ html {
 }
 
 /* Ensure the glass card in the footer doesn't overflow on small screens */
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   #aiv4 .glass-card {
-    padding: 2rem 1rem;
+    padding: 1rem 0.75rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+  #aiv4 .glass-card {
+    padding: 1.5rem 1rem;
   }
 }
 
@@ -124,10 +177,27 @@ html {
 /* Ensure the hero container behaves on mobile */
 @media (max-width: 768px) {
   #hero h1 {
-    margin-bottom: -30px;
+    margin-bottom: -20px;
   }
   
   .glass-card {
-    width: 90vw;
+    width: 95vw;
+    max-width: 100%;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) {
+  #aiv4 button:active,
+  #aiv4 a:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+  #aiv4 {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
   }
 }

@@ -10,12 +10,14 @@ import Personnel from './Personnel';
 import Footer from './components/Layout/Footer'; 
 import Gallery from './components/Gallery/Gallery';
 import { FloatingGradientBg } from '../../components/FloatingGradientBg';
+import BackButton from '../../components/BackButton';
 
 export default function AiVerse3() {
   return (
     <div className="relative bg-[#0B0B0B] text-white selection:bg-[#7C5CFF] selection:text-black">
       <FloatingGradientBg />
       <div className="relative z-10">
+        <BackButton />
         <Navbar />
         <main>
           <section id="home"><Home /></section>

@@ -7,8 +7,80 @@ html, body, #root {
   margin: 0;
   padding: 0;
   overflow-x: hidden;  
-   /* Prevents scrollbars */
+  /* Prevents scrollbars */
   background-color: #020205; /* Matches your app background */
+}
+
+/* ===============================
+   MOBILE-FIRST BASE STYLES
+   =============================== */
+
+/* Prevent horizontal overflow on all devices */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent zoom on input focus (iOS) */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ===============================
+   RESPONSIVE UTILITIES
+   =============================== */
+
+/* Safe area padding for mobile devices with notches */
+@supports (padding: max(0px)) {
+  .safe-area-padding {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Touch-friendly minimum sizes */
+@media (pointer: coarse) {
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent text selection on buttons for mobile */
+button {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Responsive text scaling */
+.text-responsive-sm {
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+.text-responsive-base {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+}
+
+.text-responsive-2xl {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.text-responsive-3xl {
+  font-size: clamp(1.875rem, 6vw, 3rem);
+}
+
+.text-responsive-hero {
+  font-size: clamp(2.5rem, 10vw, 7rem);
 }
 
 .form-input {

@@ -1,53 +1,38 @@
 import { motion } from "framer-motion";
 
 export default function Sessions() {
-  const categories = [
-    {
-      type: "Technical",
-      color: "#7C5CFF",
-      events: ["Hackathons", "Neural Debugging", "Prompt Engineering"],
-    },
-    {
-      type: "Non-Technical",
-      color: "#00F2FE",
-      events: ["AI Art Gallery", "E-Sports", "Tech Quizzes"],
-    },
+  const sessions = [
+    "Introduction to Quantum Computing",
+    "Quantum Principles (Superposition, Entanglement)",
+    "Quantum Gates & Algorithms",
+    "Quantum Programming Basics",
+    "Applications & Career Guidance",
+    "Includes short breaks, lunch break, and feedback sessions"
   ];
 
   return (
     <section id="sessions" className="min-h-screen px-6 py-20 md:px-24 bg-[#020205]">
       <h2 className="text-4xl md:text-6xl font-black text-white mb-16 tracking-tighter">
-        SESSIONS <span className="text-[#7C5CFF]">.</span>
+        WORKSHOP <span className="text-[#7C5CFF]">SESSIONS</span>
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {categories.map((cat, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        {sessions.map((session, i) => (
           <motion.div
             key={i}
-            whileHover={{ y: -10 }}
-            className="p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 relative overflow-hidden group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+            whileHover={{ y: -5 }}
+            className="p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 relative overflow-hidden group hover:border-[#7C5CFF]/50 transition-all"
           >
             {/* Glow Accent */}
-            <div 
-              className="absolute -right-10 -top-10 w-32 h-32 blur-[60px] opacity-20 transition-opacity group-hover:opacity-40"
-              style={{ backgroundColor: cat.color }}
-            />
+            <div className="absolute -right-10 -top-10 w-32 h-32 blur-[60px] opacity-10 transition-opacity group-hover:opacity-30 bg-[#7C5CFF]" />
             
-            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3" style={{ color: cat.color }}>
-              <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: cat.color }} />
-              {cat.type}
+            <span className="text-[#00F2FE] font-mono text-xs uppercase tracking-widest">Session {i + 1}</span>
+            <h3 className="text-white text-lg md:text-xl font-semibold mt-3 group-hover:text-[#00F2FE] transition-colors">
+              {session}
             </h3>
-
-            <ul className="space-y-4">
-              {cat.events.map((event, index) => (
-                <li key={index} className="flex justify-between items-center text-gray-300 group/item">
-                  <span className="text-lg group-hover/item:text-white transition-colors">{event}</span>
-                  <button className="text-[10px] font-mono tracking-widest uppercase border border-white/20 px-3 py-1 rounded-md hover:bg-white hover:text-black transition-all">
-                    View Rules
-                  </button>
-                </li>
-              ))}
-            </ul>
           </motion.div>
         ))}
       </div>

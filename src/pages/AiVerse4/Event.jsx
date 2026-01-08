@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 export default function Event() {
   const highlights = [
-    { title: "Cutting Edge", desc: "Explore the latest in LLMs and Neural Networks." },
-    { title: "Networking", desc: "Connect with tech enthusiasts from across the region." },
+    { title: "Purpose", desc: "Introduce students to Quantum Computing technologies and enhance understanding of next-generation computing. Provide foundational knowledge of quantum principles, algorithms, applications, and career opportunities." },
+    { title: "Expected Participants", desc: "300+ participants from CSE (AI & ML) and related departments" },
     { title: "Recognition", desc: "Win certificates and prizes backed by CSE AIML Dept." }
   ];
 

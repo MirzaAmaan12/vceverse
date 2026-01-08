@@ -23,32 +23,32 @@ export const eventDetails = {
   },
   schedule: [
     {
-      date: "Nov 4, 2024",
+      date: "Day 1",
       session: "Full Day",
-      topic: "Generative AI",
-      resourcePerson: "Sandeep Akkapelli",
-      attendees: 350
-    },
-    {
-      date: "Nov 5, 2024",
-      session: "Full Day",
-      topic: "Next Wave - Web Development",
-      resourcePerson: "Prashanth Ravichandran",
-      attendees: 350
-    },
-    {
-      date: "Nov 6, 2024",
-      session: "Forenoon",
-      topic: "Technical Quiz",
+      topic: "Introduction to Quantum Computing & Quantum Principles",
       resourcePerson: "Department Faculty",
-      attendees: 350
+      attendees: 300
     },
     {
-      date: "Nov 6, 2024",
-      session: "Afternoon",
-      topic: "Cultural Activities",
-      resourcePerson: "Student Committee",
-      attendees: 350
+      date: "Day 2",
+      session: "Full Day",
+      topic: "Quantum Gates, Algorithms & Programming Basics",
+      resourcePerson: "Department Faculty",
+      attendees: 300
+    },
+    {
+      date: "Day 3",
+      session: "Full Day",
+      topic: "Applications, Career Guidance & Feedback Sessions",
+      resourcePerson: "Department Faculty",
+      attendees: 300
+    },
+    {
+      date: "Hours: 09:30 AM - 05:00 PM",
+      session: "Daily",
+      topic: "Workshop with Breaks & Lunch",
+      resourcePerson: "-",
+      attendees: 300
     }
   ]
 };

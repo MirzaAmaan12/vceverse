@@ -87,10 +87,10 @@ const FloatingGradientBackground = () => (
 
     {/* Small Liquid Globe 1 - Cyan */}
     <motion.div
-      className="absolute w-[250px] h-[250px] rounded-full"
+      className="absolute w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[250px] md:h-[250px] rounded-full"
       style={{
         background: 'radial-gradient(circle at 35% 35%, rgba(0, 242, 254, 0.5), rgba(0, 242, 254, 0.2), transparent)',
-        filter: 'blur(40px)',
+        filter: 'blur(30px)',
         opacity: 0.88,
         top: '10%',
         left: '5%',
@@ -109,10 +109,10 @@ const FloatingGradientBackground = () => (
 
     {/* Small Liquid Globe 2 - Violet/Purple */}
     <motion.div
-      className="absolute w-[280px] h-[280px] rounded-full"
+      className="absolute w-[140px] h-[140px] sm:w-[200px] sm:h-[200px] md:w-[280px] md:h-[280px] rounded-full"
       style={{
         background: 'radial-gradient(circle at 40% 40%, rgba(167, 51, 255, 0.45), rgba(139, 92, 246, 0.25), transparent)',
-        filter: 'blur(45px)',
+        filter: 'blur(35px)',
         opacity: 0.92,
         top: '20%',
         right: '8%',
@@ -132,10 +132,10 @@ const FloatingGradientBackground = () => (
 
     {/* Small Liquid Globe 3 - Green */}
     <motion.div
-      className="absolute w-[260px] h-[260px] rounded-full"
+      className="absolute w-[130px] h-[130px] sm:w-[190px] sm:h-[190px] md:w-[260px] md:h-[260px] rounded-full"
       style={{
         background: 'radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.4), rgba(74, 222, 128, 0.2), transparent)',
-        filter: 'blur(42px)',
+        filter: 'blur(32px)',
         opacity: 0.87,
         bottom: '15%',
         left: '10%',
@@ -155,10 +155,10 @@ const FloatingGradientBackground = () => (
 
     {/* Small Liquid Globe 4 - Cyan-Purple Mix */}
     <motion.div
-      className="absolute w-[240px] h-[240px] rounded-full"
+      className="absolute w-[110px] h-[110px] sm:w-[170px] sm:h-[170px] md:w-[240px] md:h-[240px] rounded-full"
       style={{
         background: 'radial-gradient(circle at 60% 40%, rgba(0, 242, 254, 0.35), rgba(167, 51, 255, 0.3), transparent)',
-        filter: 'blur(43px)',
+        filter: 'blur(33px)',
         opacity: 0.85,
         bottom: '20%',
         right: '12%',
@@ -178,10 +178,10 @@ const FloatingGradientBackground = () => (
 
     {/* Small Liquid Globe 5 - Center Glow - Cyan */}
     <motion.div
-      className="absolute w-[220px] h-[220px] rounded-full"
+      className="absolute w-[100px] h-[100px] sm:w-[160px] sm:h-[160px] md:w-[220px] md:h-[220px] rounded-full"
       style={{
         background: 'radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.4), rgba(0, 242, 254, 0.15), transparent)',
-        filter: 'blur(38px)',
+        filter: 'blur(28px)',
         opacity: 0.86,
         top: '48%',
         left: '48%',
@@ -202,10 +202,10 @@ const FloatingGradientBackground = () => (
 
     {/* Small Liquid Globe 6 - Right Side - Purple */}
     <motion.div
-      className="absolute w-[230px] h-[230px] rounded-full"
+      className="absolute w-[115px] h-[115px] sm:w-[170px] sm:h-[170px] md:w-[230px] md:h-[230px] rounded-full"
       style={{
         background: 'radial-gradient(circle at 45% 45%, rgba(167, 51, 255, 0.42), rgba(139, 92, 246, 0.2), transparent)',
-        filter: 'blur(40px)',
+        filter: 'blur(30px)',
         opacity: 0.89,
         top: '35%',
         right: '5%',
@@ -225,10 +225,10 @@ const FloatingGradientBackground = () => (
 
     {/* Small Liquid Globe 7 - Left Side - Green */}
     <motion.div
-      className="absolute w-[210px] h-[210px] rounded-full"
+      className="absolute w-[105px] h-[105px] sm:w-[155px] sm:h-[155px] md:w-[210px] md:h-[210px] rounded-full"
       style={{
         background: 'radial-gradient(circle at 30% 30%, rgba(34, 197, 94, 0.38), rgba(74, 222, 128, 0.15), transparent)',
-        filter: 'blur(37px)',
+        filter: 'blur(27px)',
         opacity: 0.84,
         bottom: '30%',
         left: '3%',
@@ -265,8 +265,8 @@ const FloatingGradientBackground = () => (
 );
 
 const Logo = () => (
-  <div className="flex items-center gap-4">
-    <div className="w-16 h-16 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0 shadow-2xl border-4 border-cyan-400">
+  <div className="flex items-center gap-2 sm:gap-4">
+    <div className="w-10 h-10 sm:w-12 md:w-16 sm:h-12 md:h-16 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0 shadow-2xl border-2 sm:border-4 border-cyan-400">
       <img 
         src="/logo.png" 
         alt="Vaagdevi College Logo" 
@@ -274,10 +274,10 @@ const Logo = () => (
       />
     </div>
     <div className="flex flex-col leading-none">
-      <span className="text-[clamp(1rem,1.8vw,1.4rem)] font-extrabold text-white tracking-wide drop-shadow-lg">
+      <span className="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold text-white tracking-wide drop-shadow-lg">
         CSE (AI&ML)
       </span>
-      <span className="text-[clamp(0.75rem,1.3vw,0.9rem)] text-cyan-200 font-medium mt-1 drop-shadow">
+      <span className="text-[10px] sm:text-xs md:text-sm text-cyan-200 font-medium mt-0.5 sm:mt-1 drop-shadow hidden xs:block">
         Vaagdevi College of Engineering
       </span>
     </div>
@@ -291,7 +291,7 @@ const Navbar = () => (
     initial="hidden"
     animate="visible"
   >
-    <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-4 flex justify-between items-center">
       <Logo />
     </div>
   </motion.nav>
@@ -299,20 +299,20 @@ const Navbar = () => (
 
 const HeroSection = ({ onExploreClick }) => (
   <motion.section
-    className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden"
+    className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-16 sm:pt-20"
     variants={heroVariants}
     initial="hidden"
     animate="visible"
   >
-    <div className="relative z-10 text-center px-6 max-w-6xl mx-auto flex flex-col items-center justify-center">
+    <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center justify-center">
       <motion.h2
-        className="text-[clamp(1rem,2vw,1.5rem)] text-cyan-300 font-extrabold mb-2 tracking-[0.14em] drop-shadow-lg"
+        className="text-xs sm:text-sm md:text-base lg:text-lg text-cyan-300 font-extrabold mb-2 tracking-[0.1em] sm:tracking-[0.14em] drop-shadow-lg"
         variants={welcomeVariants}
         style={{ letterSpacing: '0.14em' }}
       >WELCOME TO</motion.h2>
       <div className="relative flex flex-col items-center">
         <motion.h1
-          className="text-[clamp(3rem,9vw,7rem)] font-black leading-[0.9] mb-3 bg-gradient-to-r from-cyan-300 via-green-300 to-blue-400 bg-clip-text text-transparent animate-gradient-glow drop-shadow-[0_0_34px_rgba(0,242,254,0.45)]"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.9] mb-3 bg-gradient-to-r from-cyan-300 via-green-300 to-blue-400 bg-clip-text text-transparent animate-gradient-glow drop-shadow-[0_0_34px_rgba(0,242,254,0.45)]"
           style={{ WebkitTextStroke: '1px rgba(0,242,254,0.14)' }}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -320,7 +320,7 @@ const HeroSection = ({ onExploreClick }) => (
         >CSE (AI&ML)</motion.h1>
         {/* Animated underline */}
         <motion.div
-          className="absolute left-1/2 -translate-x-1/2 bottom-0 h-2 w-[80%] rounded-full bg-gradient-to-r from-cyan-400 via-green-300 to-blue-400 blur-md opacity-80"
+          className="absolute left-1/2 -translate-x-1/2 bottom-0 h-1 sm:h-2 w-[80%] rounded-full bg-gradient-to-r from-cyan-400 via-green-300 to-blue-400 blur-md opacity-80"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1.2, delay: 0.3, ease: 'easeOut' }}
@@ -328,7 +328,7 @@ const HeroSection = ({ onExploreClick }) => (
         />
       </div>
       <motion.p
-        className="text-[clamp(1rem,2vw,1.4rem)] leading-relaxed text-gray-200 mt-4 mb-6 font-medium max-w-4xl"
+        className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-gray-200 mt-3 sm:mt-4 mb-4 sm:mb-6 font-medium max-w-4xl px-2"
         variants={subtitleVariants}
       >WHERE AI MEETS THE POWER OF QUANTUM REALITY</motion.p>
       
@@ -340,7 +340,7 @@ const HeroSection = ({ onExploreClick }) => (
         whileHover="hover"
         whileTap="tap"
         onClick={onExploreClick}
-        className="relative px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-500 via-purple-600 to-cyan-400 text-white font-bold text-base shadow-2xl transition-all flex items-center gap-3 justify-center overflow-hidden border-2 border-cyan-300/50 hover:border-cyan-300 group"
+        className="relative px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-purple-500 via-purple-600 to-cyan-400 text-white font-bold text-sm sm:text-base shadow-2xl transition-all flex items-center gap-2 sm:gap-3 justify-center overflow-hidden border-2 border-cyan-300/50 hover:border-cyan-300 group"
       >
         {/* Animated background gradient */}
         <motion.div
@@ -378,10 +378,10 @@ const HeroSection = ({ onExploreClick }) => (
 );
 
 const Footer = () => (
-  <footer className="w-full bg-slate-950 border-t border-white/10 py-8 px-6">
-    <div className="max-w-7xl mx-auto text-center text-gray-400 text-sm">
+  <footer className="w-full bg-slate-950 border-t border-white/10 py-6 sm:py-8 px-4 sm:px-6">
+    <div className="max-w-7xl mx-auto text-center text-gray-400 text-xs sm:text-sm">
       <p>© 2026 CSE (AI&ML) Department - Vaagdevi College of Engineering</p>
-      <p>Innovating the future with AI & Machine Learning</p>
+      <p className="mt-1">Innovating the future with AI & Machine Learning</p>
     </div>
   </footer>
 );

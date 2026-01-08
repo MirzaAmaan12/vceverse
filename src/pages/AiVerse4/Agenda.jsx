@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 export default function Agenda() {
   const schedule = [
-    { time: "09:30 AM", event: "Inauguration Ceremony" },
-    { time: "11:00 AM", event: "Keynote: Future of AIML" },
-    { time: "01:00 PM", event: "Technical Breakout Sessions" },
-    { time: "03:30 PM", event: "Workshops & Awards" },
+    { time: "09:30 AM - 05:00 PM", event: "Daily Workshop Hours" },
+    { time: "Day 1", event: "Introduction to Quantum Computing & Quantum Principles (Superposition, Entanglement)" },
+    { time: "Day 2", event: "Quantum Gates, Algorithms & Quantum Programming Basics" },
+    { time: "Day 3", event: "Applications, Career Guidance & Feedback Sessions" },
   ];
 
   return (
