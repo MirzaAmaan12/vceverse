@@ -266,7 +266,7 @@ const FloatingGradientBackground = () => (
 
 const Logo = () => (
   <div className="flex items-center gap-2 sm:gap-4">
-    <div className="w-10 h-10 sm:w-12 md:w-16 sm:h-12 md:h-16 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0 shadow-2xl border-2 sm:border-4 border-cyan-400">
+    <div className="w-10 h-10 sm:w-12 md:w-16 sm:h-12 md:h-16 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
       <img 
         src="/logo.png" 
         alt="Vaagdevi College Logo" 
@@ -277,7 +277,7 @@ const Logo = () => (
       <span className="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold text-white tracking-wide drop-shadow-lg">
         CSE (AI&ML)
       </span>
-      <span className="text-[10px] sm:text-xs md:text-sm text-cyan-200 font-medium mt-0.5 sm:mt-1 drop-shadow hidden xs:block">
+      <span className="text-[10px] sm:text-xs md:text-sm text-gray-300 font-medium mt-0.5 sm:mt-1 drop-shadow hidden xs:block">
         Vaagdevi College of Engineering
       </span>
     </div>
