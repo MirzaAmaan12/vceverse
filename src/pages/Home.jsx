@@ -284,7 +284,7 @@ const Logo = () => (
   </div>
 );
 
-const Navbar = () => (
+const Navbar = ({ onExploreClick }) => (
   <motion.nav
     className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-slate-950/40 border-b border-white/10"
     variants={navbarVariants}
@@ -293,6 +293,18 @@ const Navbar = () => (
   >
     <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-4 flex justify-between items-center">
       <Logo />
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={onExploreClick}
+        className="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-white font-semibold text-xs sm:text-sm hover:shadow-lg hover:shadow-cyan-500/40 transition-all flex items-center gap-2"
+      >
+        Explore
+        <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="5" y1="8" x2="11" y2="8"></line>
+          <polyline points="8 5 11 8 8 11"></polyline>
+        </svg>
+      </motion.button>
     </div>
   </motion.nav>
 );
@@ -306,73 +318,30 @@ const HeroSection = ({ onExploreClick }) => (
   >
     <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center justify-center">
       <motion.h2
-        className="text-xs sm:text-sm md:text-base lg:text-lg text-cyan-300 font-extrabold mb-2 tracking-[0.1em] sm:tracking-[0.14em] drop-shadow-lg"
+        className="text-sm sm:text-base md:text-lg lg:text-xl text-cyan-400 font-black mb-4 tracking-[0.2em] sm:tracking-[0.3em] uppercase drop-shadow-lg"
         variants={welcomeVariants}
-        style={{ letterSpacing: '0.14em' }}
       >WELCOME TO</motion.h2>
       <div className="relative flex flex-col items-center">
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.9] mb-3 bg-gradient-to-r from-cyan-300 via-green-300 to-blue-400 bg-clip-text text-transparent animate-gradient-glow drop-shadow-[0_0_34px_rgba(0,242,254,0.45)]"
-          style={{ WebkitTextStroke: '1px rgba(0,242,254,0.14)' }}
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.95] mb-6 bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-400 bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(0,242,254,0.5)]"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
         >CSE (AI&ML)</motion.h1>
-        {/* Animated underline */}
+        {/* Reflection/glow effect below text */}
         <motion.div
-          className="absolute left-1/2 -translate-x-1/2 bottom-0 h-1 sm:h-2 w-[80%] rounded-full bg-gradient-to-r from-cyan-400 via-green-300 to-blue-400 blur-md opacity-80"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 0.3, ease: 'easeOut' }}
-          style={{ transformOrigin: 'center' }}
+          className="absolute left-1/2 -translate-x-1/2 -bottom-4 sm:-bottom-6 h-16 sm:h-24 w-[90%] rounded-full bg-gradient-to-t from-transparent via-cyan-500/20 to-transparent blur-2xl opacity-60"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
         />
       </div>
       <motion.p
-        className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-gray-200 mt-3 sm:mt-4 mb-4 sm:mb-6 font-medium max-w-4xl px-2"
+        className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-300 mt-6 sm:mt-8 font-medium max-w-3xl px-4"
         variants={subtitleVariants}
-      >WHERE AI MEETS THE POWER OF QUANTUM REALITY</motion.p>
-      
-      {/* Centered Explore Button */}
-      <motion.button
-        variants={exploreBtnVariants}
-        initial="hidden"
-        animate="visible"
-        whileHover="hover"
-        whileTap="tap"
-        onClick={onExploreClick}
-        className="relative px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-purple-500 via-purple-600 to-cyan-400 text-white font-bold text-sm sm:text-base shadow-2xl transition-all flex items-center gap-2 sm:gap-3 justify-center overflow-hidden border-2 border-cyan-300/50 hover:border-cyan-300 group"
       >
-        {/* Animated background gradient */}
-        <motion.div
-          className="absolute inset-0 rounded-full pointer-events-none"
-          style={{ background: "linear-gradient(90deg,#7C5CFF,#00F2FE)" }}
-          animate={{ opacity: [0.3, 0.6, 0.3] }}
-          transition={{ repeat: Infinity, duration: 2.5 }}
-        />
-        
-        {/* Glow effect */}
-        <motion.div
-          className="absolute -inset-1 rounded-full bg-gradient-to-r from-purple-600 to-cyan-400 opacity-0 blur-xl group-hover:opacity-100 transition-opacity duration-300"
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        />
-        
-        <motion.span className="relative text-white font-bold text-base tracking-wide">
-          EXPLORE NOW
-        </motion.span>
-        
-        <motion.span
-          initial={{ x: 0 }}
-          whileHover={{ x: 6 }}
-          transition={{ type: "spring", stiffness: 200, damping: 15 }}
-          className="relative"
-        >
-          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="5" y1="12" x2="15" y2="12"></line>
-            <polyline points="10 7 15 12 10 17"></polyline>
-          </svg>
-        </motion.span>
-      </motion.button>
+        Innovating the Future with <span className="text-cyan-400 underline underline-offset-4 decoration-cyan-400">Artificial Intelligence</span> & <span className="text-cyan-400">Machine Learning</span>
+      </motion.p>
     </div>
   </motion.section>
 );
@@ -408,9 +377,9 @@ export default function Home() {
         <title>CSE (AI&ML) - Artificial Intelligence & Machine Learning</title>
         <meta
           name="description"
-          content="Welcome to CSE (AI&ML) Department - WHERE AI MEETS THE POWER OF QUANTUM REALITY"
+          content="Welcome to CSE (AI&ML) Department - Innovating the Future with Artificial Intelligence & Machine Learning"
         />
-        <meta name="keywords" content="CSE, AIML, AI, ML, Artificial Intelligence, Machine Learning, AI Verse, Events" />
+        <meta name="keywords" content="CSE, AIML, AI, ML, Artificial Intelligence, Machine Learning, AI Verse, Events, Vaagdevi College" />
       </Helmet>
 
       <AnimatePresence>
@@ -423,7 +392,7 @@ export default function Home() {
         
         {/* Content layer */}
         <div className="relative z-10">
-          <Navbar />
+          <Navbar onExploreClick={handleExplore} />
           <main>
             <HeroSection onExploreClick={handleExplore} />
           </main>
