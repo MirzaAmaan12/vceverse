@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { aiverse2Data } from './data/content';
 import AboutSection from './components/AboutSection';
-import './AiVerse2.css';
+import "./AiVerse2.css";
 import { useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import Personnel from './Personnel';
