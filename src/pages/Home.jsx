@@ -460,7 +460,7 @@ const GlowingRings = () => (
 
 const HeroSection = ({ onExploreClick }) => (
   <motion.section
-    className="relative min-h-[70vh] sm:min-h-[75vh] flex flex-col justify-center items-center overflow-hidden pt-24 sm:pt-28 pb-8"
+    className="relative min-h-[70vh] sm:min-h-[75vh] flex flex-col justify-center items-center overflow-hidden pt-36 sm:pt-40 md:pt-44 pb-8"
     variants={heroVariants}
     initial="hidden"
     animate="visible"
