@@ -265,94 +265,341 @@ const FloatingGradientBackground = () => (
 );
 
 const Logo = () => (
-  <div className="flex items-center gap-2 sm:gap-4">
-    <div className="w-10 h-10 sm:w-12 md:w-16 sm:h-12 md:h-16 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
+  <motion.div 
+    className="flex items-center gap-4 sm:gap-5 md:gap-6"
+    initial={{ opacity: 0, x: -20 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    <motion.div 
+      className="relative w-16 h-16 sm:w-20 md:w-24 sm:h-20 md:h-24 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0"
+      whileHover={{ scale: 1.1, rotate: 5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      {/* Glow effect behind logo */}
+      <motion.div
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/30 to-purple-500/30 blur-md"
+        animate={{ opacity: [0.5, 0.8, 0.5] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      />
       <img 
         src="/logo.png" 
         alt="Vaagdevi College Logo" 
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover relative z-10"
       />
-    </div>
-    <div className="flex flex-col leading-none">
-      <span className="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold text-white tracking-wide drop-shadow-lg">
+    </motion.div>
+    <div className="flex flex-col leading-tight">
+      <motion.span 
+        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white tracking-wide"
+        animate={{ 
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+        }}
+        transition={{ duration: 5, repeat: Infinity }}
+        style={{ backgroundSize: "200% 200%" }}
+      >
         CSE (AI&ML)
-      </span>
-      <span className="text-[10px] sm:text-xs md:text-sm text-gray-300 font-medium mt-0.5 sm:mt-1 drop-shadow hidden xs:block">
+      </motion.span>
+      <motion.span 
+        className="text-sm sm:text-base md:text-lg lg:text-xl text-cyan-400/90 font-semibold mt-1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
         Vaagdevi College of Engineering
-      </span>
+      </motion.span>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Navbar = ({ onExploreClick }) => (
   <motion.nav
-    className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-slate-950/40 border-b border-white/10"
+    className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-slate-950/60 border-b border-cyan-500/20 shadow-lg shadow-cyan-500/5"
     variants={navbarVariants}
     initial="hidden"
     animate="visible"
   >
-    <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-4 flex justify-between items-center">
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 sm:py-5 md:py-6 flex justify-between items-center">
       <Logo />
       <motion.button
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 242, 254, 0.5)" }}
         whileTap={{ scale: 0.95 }}
         onClick={onExploreClick}
-        className="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400 text-white font-semibold text-xs sm:text-sm hover:shadow-lg hover:shadow-cyan-500/40 transition-all flex items-center gap-2"
+        className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 rounded-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-teal-400 text-white font-bold text-sm sm:text-base md:text-lg hover:shadow-xl hover:shadow-cyan-500/50 transition-all flex items-center gap-3"
       >
         Explore
-        <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="5" y1="8" x2="11" y2="8"></line>
-          <polyline points="8 5 11 8 8 11"></polyline>
+        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="5" y1="10" x2="15" y2="10"></line>
+          <polyline points="10 5 15 10 10 15"></polyline>
         </svg>
       </motion.button>
     </div>
   </motion.nav>
 );
 
+// Floating Particles Component
+const FloatingParticles = () => {
+  const particles = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 4 + 2,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    duration: Math.random() * 15 + 10,
+    delay: Math.random() * 5,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full"
+          style={{
+            width: particle.size,
+            height: particle.size,
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            background: particle.id % 3 === 0 
+              ? 'rgba(0, 242, 254, 0.6)' 
+              : particle.id % 3 === 1 
+                ? 'rgba(139, 92, 246, 0.6)' 
+                : 'rgba(34, 197, 94, 0.5)',
+            boxShadow: particle.id % 3 === 0 
+              ? '0 0 10px rgba(0, 242, 254, 0.8)' 
+              : particle.id % 3 === 1 
+                ? '0 0 10px rgba(139, 92, 246, 0.8)' 
+                : '0 0 10px rgba(34, 197, 94, 0.6)',
+          }}
+          animate={{
+            y: [0, -100, -200, -100, 0],
+            x: [0, 30, -20, 40, 0],
+            opacity: [0.3, 0.8, 0.6, 0.9, 0.3],
+            scale: [1, 1.3, 0.8, 1.2, 1],
+          }}
+          transition={{
+            duration: particle.duration,
+            delay: particle.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Animated Grid Lines
+const AnimatedGrid = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(0, 242, 254, 0.3)" strokeWidth="0.5"/>
+        </pattern>
+        <linearGradient id="gridFade" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="white" stopOpacity="0"/>
+          <stop offset="50%" stopColor="white" stopOpacity="1"/>
+          <stop offset="100%" stopColor="white" stopOpacity="0"/>
+        </linearGradient>
+        <mask id="gridMask">
+          <rect width="100%" height="100%" fill="url(#gridFade)"/>
+        </mask>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" mask="url(#gridMask)"/>
+    </svg>
+  </div>
+);
+
+// Animated Typing Text
+const TypewriterText = ({ text, delay = 0 }) => {
+  const letters = text.split("");
+  return (
+    <span className="inline-flex">
+      {letters.map((letter, index) => (
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.1,
+            delay: delay + index * 0.05,
+          }}
+        >
+          {letter === " " ? "\u00A0" : letter}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
+
+// Glowing Ring Animation
+const GlowingRings = () => (
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    {[1, 2, 3].map((ring) => (
+      <motion.div
+        key={ring}
+        className="absolute rounded-full border"
+        style={{
+          width: `${ring * 250}px`,
+          height: `${ring * 250}px`,
+          borderColor: ring === 1 ? 'rgba(0, 242, 254, 0.15)' : ring === 2 ? 'rgba(139, 92, 246, 0.1)' : 'rgba(34, 197, 94, 0.08)',
+        }}
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.6, 0.3],
+          rotate: ring % 2 === 0 ? [0, 360] : [360, 0],
+        }}
+        transition={{
+          duration: 8 + ring * 2,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+    ))}
+  </div>
+);
+
 const HeroSection = ({ onExploreClick }) => (
   <motion.section
-    className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-16 sm:pt-20"
+    className="relative min-h-[70vh] sm:min-h-[75vh] flex flex-col justify-center items-center overflow-hidden pt-24 sm:pt-28 pb-8"
     variants={heroVariants}
     initial="hidden"
     animate="visible"
   >
+    {/* Background effects */}
+    <FloatingParticles />
+    <AnimatedGrid />
+    <GlowingRings />
+
     <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center justify-center">
-      <motion.h2
-        className="text-sm sm:text-base md:text-lg lg:text-xl text-cyan-400 font-black mb-4 tracking-[0.2em] sm:tracking-[0.3em] uppercase drop-shadow-lg"
-        variants={welcomeVariants}
-      >WELCOME TO</motion.h2>
+      {/* Animated Welcome Text */}
+      <motion.div
+        className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-400 font-black mb-6 tracking-[0.2em] sm:tracking-[0.3em] uppercase"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <TypewriterText text="WELCOME TO THE" delay={0.5} />
+      </motion.div>
+
       <div className="relative flex flex-col items-center">
+        {/* Main Title with Letter Animation */}
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.95] mb-6 bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-400 bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(0,242,254,0.5)]"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-        >CSE (AI&ML)</motion.h1>
-        {/* Reflection/glow effect below text */}
-        <motion.div
-          className="absolute left-1/2 -translate-x-1/2 -bottom-4 sm:-bottom-6 h-16 sm:h-24 w-[90%] rounded-full bg-gradient-to-t from-transparent via-cyan-500/20 to-transparent blur-2xl opacity-60"
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black leading-[0.95] mb-8"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
+        >
+          {["C", "S", "E", " ", "(", "A", "I", "&", "M", "L", ")"].map((letter, index) => (
+            <motion.span
+              key={index}
+              className="inline-block bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-400 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 50, rotateX: -90 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{
+                duration: 0.6,
+                delay: 1.3 + index * 0.08,
+                type: "spring",
+                stiffness: 100,
+              }}
+              whileHover={{
+                scale: 1.2,
+                color: "#00F2FE",
+                textShadow: "0 0 30px rgba(0, 242, 254, 0.8)",
+              }}
+              style={{ 
+                textShadow: "0 0 50px rgba(0, 242, 254, 0.5)",
+                display: letter === " " ? "inline" : "inline-block",
+              }}
+            >
+              {letter === " " ? "\u00A0" : letter}
+            </motion.span>
+          ))}
+        </motion.h1>
+
+        {/* Animated Underline */}
+        <motion.div
+          className="h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full"
+          initial={{ width: 0, opacity: 0 }}
+          animate={{ width: "80%", opacity: 1 }}
+          transition={{ duration: 1, delay: 2.2, ease: "easeOut" }}
+        />
+
+        {/* Pulsing Glow Effect */}
+        <motion.div
+          className="absolute left-1/2 -translate-x-1/2 -bottom-4 sm:-bottom-6 h-20 sm:h-28 w-[100%] rounded-full"
+          style={{
+            background: "radial-gradient(ellipse at center, rgba(0, 242, 254, 0.4) 0%, transparent 70%)",
+          }}
+          animate={{
+            opacity: [0.4, 0.8, 0.4],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         />
       </div>
+
+      {/* Subtitle with Stagger Animation */}
       <motion.p
-        className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-300 mt-6 sm:mt-8 font-medium max-w-3xl px-4"
-        variants={subtitleVariants}
+        className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-gray-300 mt-10 sm:mt-12 font-medium max-w-4xl px-4"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 2.5 }}
       >
-        Innovating the Future with <span className="text-cyan-400 underline underline-offset-4 decoration-cyan-400">Artificial Intelligence</span> & <span className="text-cyan-400">Machine Learning</span>
+        Innovating the Future with{" "}
+        <motion.span 
+          className="text-cyan-400 font-bold"
+          animate={{ 
+            textShadow: ["0 0 10px rgba(0, 242, 254, 0.5)", "0 0 20px rgba(0, 242, 254, 0.8)", "0 0 10px rgba(0, 242, 254, 0.5)"]
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          Artificial Intelligence
+        </motion.span>{" "}
+        &{" "}
+        <motion.span 
+          className="text-purple-400 font-bold"
+          animate={{ 
+            textShadow: ["0 0 10px rgba(139, 92, 246, 0.5)", "0 0 20px rgba(139, 92, 246, 0.8)", "0 0 10px rgba(139, 92, 246, 0.5)"]
+          }}
+          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+        >
+          Machine Learning
+        </motion.span>
       </motion.p>
+
     </div>
   </motion.section>
 );
 
 const Footer = () => (
-  <footer className="w-full bg-slate-950 border-t border-white/10 py-6 sm:py-8 px-4 sm:px-6">
-    <div className="max-w-7xl mx-auto text-center text-gray-400 text-xs sm:text-sm">
-      <p>© 2026 CSE (AI&ML) Department - Vaagdevi College of Engineering</p>
-      <p className="mt-1">Innovating the future with AI & Machine Learning</p>
+  <motion.footer 
+    className="w-full bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent border-t border-cyan-500/20 py-10 sm:py-14 md:py-16 px-6 sm:px-8"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.5 }}
+  >
+    <div className="max-w-7xl mx-auto text-center">
+      <motion.p 
+        className="text-gray-300 text-base sm:text-lg md:text-xl font-medium"
+        whileHover={{ color: "#00F2FE" }}
+        transition={{ duration: 0.3 }}
+      >
+        © 2026 CSE (AI&ML) Department - Vaagdevi College of Engineering
+      </motion.p>
+      <motion.p 
+        className="mt-2 sm:mt-3 text-cyan-400/70 text-sm sm:text-base md:text-lg font-medium"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+      >
+        Innovating the future with AI & Machine Learning
+      </motion.p>
     </div>
-  </footer>
+  </motion.footer>
 );
 
 export default function Home() {

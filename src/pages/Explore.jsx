@@ -4,19 +4,28 @@ import { Helmet } from "react-helmet-async";
 import FeaturedExplorePoster from "../components/FeaturedExplorePoster";
 
 const Logo = () => (
-  <div className="flex items-center gap-2 sm:gap-3">
-    <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0 shadow-lg">
+  <motion.div 
+    className="flex items-center gap-2 sm:gap-3"
+    initial={{ opacity: 0, x: -20 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    <motion.div 
+      className="w-9 h-9 sm:w-12 sm:h-12 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0"
+      whileHover={{ scale: 1.1, rotate: 5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
       <img 
         src="/logo.png" 
         alt="Vaagdevi College Logo" 
         className="w-full h-full object-cover" 
       />
-    </div>
+    </motion.div>
     <div className="flex flex-col leading-none">
       <span className="text-sm sm:text-lg font-bold text-white">CSE (AI&ML)</span>
-      <span className="text-[10px] sm:text-xs text-gray-400 hidden xs:block">Vaagdevi College of Engineering</span>
+      <span className="text-[9px] sm:text-[10px] text-gray-400">Vaagdevi College of Engineering</span>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Navbar = ({ onHomeClick }) => {
