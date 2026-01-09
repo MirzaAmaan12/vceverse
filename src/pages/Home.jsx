@@ -266,13 +266,13 @@ const FloatingGradientBackground = () => (
 
 const Logo = () => (
   <motion.div 
-    className="flex items-center gap-4 sm:gap-5 md:gap-6"
+    className="flex items-center gap-2 sm:gap-4 md:gap-5"
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.6 }}
   >
     <motion.div 
-      className="relative w-16 h-16 sm:w-20 md:w-24 sm:h-20 md:h-24 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0"
+      className="relative w-10 h-10 sm:w-14 md:w-20 sm:h-14 md:h-20 rounded-full overflow-hidden flex items-center justify-center flex-shrink-0"
       whileHover={{ scale: 1.1, rotate: 5 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
@@ -290,7 +290,7 @@ const Logo = () => (
     </motion.div>
     <div className="flex flex-col leading-tight">
       <motion.span 
-        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white tracking-wide"
+        className="text-sm sm:text-lg md:text-2xl lg:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white tracking-wide"
         animate={{ 
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}
@@ -300,7 +300,7 @@ const Logo = () => (
         CSE (AI&ML)
       </motion.span>
       <motion.span 
-        className="text-sm sm:text-base md:text-lg lg:text-xl text-cyan-400/90 font-semibold mt-1"
+        className="text-[10px] sm:text-sm md:text-base lg:text-lg text-cyan-400/90 font-semibold mt-0.5"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -460,7 +460,7 @@ const GlowingRings = () => (
 
 const HeroSection = ({ onExploreClick }) => (
   <motion.section
-    className="relative min-h-[70vh] sm:min-h-[75vh] flex flex-col justify-center items-center overflow-hidden pt-36 sm:pt-40 md:pt-44 pb-8"
+    className="relative min-h-[75vh] sm:min-h-[70vh] flex flex-col justify-center items-center overflow-hidden pt-24 sm:pt-32 md:pt-36 pb-4 sm:pb-8"
     variants={heroVariants}
     initial="hidden"
     animate="visible"
@@ -473,7 +473,7 @@ const HeroSection = ({ onExploreClick }) => (
     <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center justify-center">
       {/* Animated Welcome Text */}
       <motion.div
-        className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-400 font-black mb-6 tracking-[0.2em] sm:tracking-[0.3em] uppercase"
+        className="text-sm sm:text-lg md:text-xl lg:text-2xl text-cyan-400 font-black mb-3 sm:mb-6 tracking-[0.15em] sm:tracking-[0.25em] uppercase"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -484,7 +484,7 @@ const HeroSection = ({ onExploreClick }) => (
       <div className="relative flex flex-col items-center">
         {/* Main Title with Letter Animation */}
         <motion.h1
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black leading-[0.95] mb-8"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.95] mb-4 sm:mb-8 whitespace-nowrap"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1.2 }}
@@ -544,7 +544,7 @@ const HeroSection = ({ onExploreClick }) => (
 
       {/* Subtitle with Stagger Animation */}
       <motion.p
-        className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed text-gray-300 mt-10 sm:mt-12 font-medium max-w-4xl px-4"
+        className="text-sm sm:text-base md:text-xl lg:text-2xl leading-relaxed text-gray-300 mt-6 sm:mt-10 font-medium max-w-4xl px-4"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 2.5 }}
@@ -577,21 +577,21 @@ const HeroSection = ({ onExploreClick }) => (
 
 const Footer = () => (
   <motion.footer 
-    className="w-full bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent border-t border-cyan-500/20 py-10 sm:py-14 md:py-16 px-6 sm:px-8"
+    className="w-full bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent border-t border-cyan-500/20 py-6 sm:py-10 md:py-12 px-4 sm:px-8"
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay: 0.5 }}
   >
     <div className="max-w-7xl mx-auto text-center">
       <motion.p 
-        className="text-gray-300 text-base sm:text-lg md:text-xl font-medium"
+        className="text-gray-300 text-xs sm:text-base md:text-lg font-medium"
         whileHover={{ color: "#00F2FE" }}
         transition={{ duration: 0.3 }}
       >
         © 2026 CSE (AI&ML) Department - Vaagdevi College of Engineering
       </motion.p>
       <motion.p 
-        className="mt-2 sm:mt-3 text-cyan-400/70 text-sm sm:text-base md:text-lg font-medium"
+        className="mt-1 sm:mt-2 text-cyan-400/70 text-[10px] sm:text-sm md:text-base font-medium"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
