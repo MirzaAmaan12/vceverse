@@ -1,10 +1,10 @@
-/* Scoped to AI-VERSE 3.0 */
+/* Scoped to AI-VERSE 3.0 - Orange Theme matching AiVerse 2.0 */
 #aiv3 {
-  --bg-dark: #0A0B1A;
+  --bg-dark: #050a18;
   --bg-card: rgba(15, 17, 41, 0.7);
-  --accent-cyan: #22D3EE;
+  --primary-orange: #f58220;
+  --accent-orange: #ff6b00;
   --accent-lime: #F0FF42;
-  --purple-grad: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
   
   background-color: var(--bg-dark);
   color: white;
@@ -13,22 +13,29 @@
 
 /* Glassmorphism Utility */
 #aiv3 .glass-card {
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
 }
 
-/* Neon Glow Effect */
+/* Neon Glow Effect - Orange */
 #aiv3 .glow-cyan {
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 20px rgba(245, 130, 32, 0.3);
 }
 
 /* Specific styling for the Department title */
 #aiv3 .dept-title {
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent-cyan);
+  color: var(--primary-orange);
+}
+
+/* Glow Effect for Titles */
+#aiv3 .glow-text {
+  color: #f58220;
+  text-shadow: 0 0 30px rgba(245, 130, 32, 0.4);
+  letter-spacing: -0.05em;
 }
 
 /* Responsive Typography */
