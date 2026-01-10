@@ -70,8 +70,7 @@ export default function Feedback() {
         {
           name: formData.name.trim() || null,
           email: formData.email.trim() || null,
-          message: formData.message.trim(),
-          event: "AI-VERSE 4.0"
+          message: formData.message.trim()
         }
       ]);
 
