@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { supabase } from "../../supabase";
 
 export default function Feedback() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,31 +53,33 @@ export default function Feedback() {
     setSubmitStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch('/api/feedback', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const { data, error } = await supabase
+        .from('feedback')
+        .insert([
+          {
+            name: formData.name.trim() || null,
+            email: formData.email.trim() || null,
+            message: formData.message.trim(),
+            event: 'AI-VERSE 4.0',
+            created_at: new Date().toISOString()
+          }
+        ]);
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (error) {
+        console.error('Supabase error:', error);
+        setSubmitStatus({ type: 'error', message: 'Failed to submit feedback. Please try again.' });
+      } else {
         setSubmitStatus({ type: 'success', message: 'Thank you! Your feedback has been submitted successfully.' });
         // Clear form
         setFormData({ name: '', email: '', message: '' });
-        // Close modal after 2 seconds
+        // Clear success message after 3 seconds
         setTimeout(() => {
-          setIsOpen(false);
           setSubmitStatus({ type: '', message: '' });
-        }, 2000);
-      } else {
-        setSubmitStatus({ type: 'error', message: data.error || 'Failed to submit feedback. Please try again.' });
+        }, 3000);
       }
     } catch (error) {
       console.error('Submission error:', error);
-      setSubmitStatus({ type: 'error', message: 'Network error. Please check your connection and try again.' });
+      setSubmitStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
     } finally {
       setIsSubmitting(false);
     }
