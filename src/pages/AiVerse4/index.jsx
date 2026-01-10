@@ -7,6 +7,7 @@ import EventStream from './components/EventInfo/EventStream';
 import SessionsInclude from './SessionsInclude';
 import Personnel from './Personnel';
 import Home from './Home';
+import Feedback from './Feedback';
 import { FloatingGradientBg } from '../../components/FloatingGradientBg';
 import BackButton from '../../components/BackButton';
 
@@ -36,6 +37,9 @@ export default function AiVerse4() {
 
         {/* Foundation Team */}
         <Personnel />
+
+        {/* Feedback Section */}
+        <Feedback />
       </main>
       
       {/* Institutional Footer */}

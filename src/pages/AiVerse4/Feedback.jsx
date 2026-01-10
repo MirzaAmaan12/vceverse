@@ -3,6 +3,13 @@ import { useState } from "react";
 
 export default function Feedback() {
   const [isOpen, setIsOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
 
   const testimonials = [
     {
@@ -17,95 +24,183 @@ export default function Feedback() {
     },
   ];
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear any previous status when user starts typing
+    if (submitStatus.message) {
+      setSubmitStatus({ type: '', message: '' });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Validate message
+    if (!formData.message.trim()) {
+      setSubmitStatus({ type: 'error', message: 'Please enter your feedback message.' });
+      return;
+    }
+
+    // Validate email format if provided
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setSubmitStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Thank you! Your feedback has been submitted successfully.' });
+        // Clear form
+        setFormData({ name: '', email: '', message: '' });
+        // Close modal after 2 seconds
+        setTimeout(() => {
+          setIsOpen(false);
+          setSubmitStatus({ type: '', message: '' });
+        }, 2000);
+      } else {
+        setSubmitStatus({ type: 'error', message: data.error || 'Failed to submit feedback. Please try again.' });
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitStatus({ type: 'error', message: 'Network error. Please check your connection and try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setSubmitStatus({ type: '', message: '' });
+  };
+
   return (
     <motion.section 
       id="feedback"
-      className="min-h-screen px-6 py-20 md:px-24 flex flex-col justify-center bg-[#050505] relative"
+      className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 md:px-24 flex flex-col justify-center bg-[#050505] relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
     >
       <div className="max-w-6xl w-full mx-auto">
-        <div className="mb-12 text-center md:text-left">
-          <h2 className="text-3xl md:text-5xl text-[#7C5CFF] font-bold mb-4">Voices of AI VERSE</h2>
-          <p className="text-gray-400 text-lg">Hear from our previous participants.</p>
+        <div className="mb-8 sm:mb-12 text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl text-[#7C5CFF] font-bold mb-3 sm:mb-4">Voices of AI VERSE</h2>
+          <p className="text-gray-400 text-sm sm:text-lg">Hear from our previous participants.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-10 sm:mb-16">
           {testimonials.map((item, index) => (
-            <div key={index} className="p-8 rounded-3xl bg-white/5 border border-white/10">
-              <p className="text-gray-300 italic mb-6">"{item.text}"</p>
-              <h4 className="text-white font-bold">{item.name}</h4>
-              <p className="text-[#7C5CFF] text-xs uppercase tracking-widest">{item.role}</p>
+            <div key={index} className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10">
+              <p className="text-gray-300 italic mb-4 sm:mb-6 text-sm sm:text-base">"{item.text}"</p>
+              <h4 className="text-white font-bold text-sm sm:text-base">{item.name}</h4>
+              <p className="text-[#7C5CFF] text-[10px] sm:text-xs uppercase tracking-widest">{item.role}</p>
             </div>
           ))}
         </div>
 
-        {/* TRIGGER BUTTON */}
-        <div className="text-center">
-          <button 
-            onClick={() => setIsOpen(true)}
-            className="text-white hover:text-[#7C5CFF] underline underline-offset-8 transition-all font-semibold"
-          >
-            Submit Your Feedback →
-          </button>
-        </div>
-      </div>
-
-      {/* FEEDBACK MODAL */}
-      <AnimatePresence>
-        {isOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-            {/* Backdrop Blur */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md"
-            />
-
-            {/* Form Card */}
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-lg bg-[#111124] border border-[#7C5CFF]/30 p-8 rounded-3xl shadow-2xl"
-            >
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-white"
-              >
-                ✕
-              </button>
+        {/* INLINE FEEDBACK FORM */}
+        <div className="max-w-2xl mx-auto">
+          <div className="p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#111124] to-[#0A0B1A] border border-[#7C5CFF]/20">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Share Your Experience</h3>
+            <p className="text-gray-400 text-xs sm:text-sm mb-6">We'd love to hear your thoughts about AI VERSE 4.0</p>
+            
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-gray-400 text-xs mb-1.5">Name (optional)</label>
+                  <input 
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your name"
+                    disabled={isSubmitting}
+                    className="w-full bg-black/40 border border-white/10 p-3 rounded-xl outline-none focus:border-[#7C5CFF] text-white text-sm placeholder:text-gray-600 transition-colors disabled:opacity-50"
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-400 text-xs mb-1.5">Email (optional)</label>
+                  <input 
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="your@email.com"
+                    disabled={isSubmitting}
+                    className="w-full bg-black/40 border border-white/10 p-3 rounded-xl outline-none focus:border-[#7C5CFF] text-white text-sm placeholder:text-gray-600 transition-colors disabled:opacity-50"
+                  />
+                </div>
+              </div>
               
-              <h3 className="text-2xl font-bold text-white mb-6">Share Your Experience</h3>
-              
-              <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); setIsOpen(false); }}>
-                <input 
-                  type="text" 
-                  placeholder="Your Name" 
-                  className="bg-black/40 border border-white/10 p-3 rounded-xl outline-none focus:border-[#7C5CFF] text-white"
-                  required
-                />
+              <div>
+                <label className="block text-gray-400 text-xs mb-1.5">
+                  Feedback Message <span className="text-[#7C5CFF]">*</span>
+                </label>
                 <textarea 
-                  placeholder="Your Feedback" 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Share your experience, suggestions, or thoughts about the event..."
                   rows="4"
-                  className="bg-black/40 border border-white/10 p-3 rounded-xl outline-none focus:border-[#7C5CFF] text-white resize-none"
+                  disabled={isSubmitting}
+                  className="w-full bg-black/40 border border-white/10 p-3 rounded-xl outline-none focus:border-[#7C5CFF] text-white text-sm placeholder:text-gray-600 resize-none transition-colors disabled:opacity-50"
                   required
                 ></textarea>
-                
-                <button 
-                  type="submit"
-                  className="bg-[#7C5CFF] text-black font-bold py-3 rounded-xl hover:shadow-[0_0_20px_#7C5CFF] transition-all"
-                >
-                  Post Feedback
-                </button>
-              </form>
-            </motion.div>
+              </div>
+
+              {/* Status Messages */}
+              <AnimatePresence>
+                {submitStatus.message && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`p-3 rounded-xl text-sm ${
+                      submitStatus.type === 'success' 
+                        ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+                        : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    }`}
+                  >
+                    {submitStatus.type === 'success' ? '✓ ' : '⚠ '}
+                    {submitStatus.message}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-[#7C5CFF] text-white font-bold py-3 px-6 rounded-xl hover:shadow-[0_0_20px_#7C5CFF] transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none flex items-center justify-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Submitting...
+                  </>
+                ) : (
+                  'Submit Feedback'
+                )}
+              </button>
+            </form>
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </motion.section>
   );
 }

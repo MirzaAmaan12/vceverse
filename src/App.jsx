@@ -6,6 +6,7 @@ import AiVerse from "./pages/AiVerse";
 import AiVerse2 from "./pages/AiVerse2";
 import AiVerse3 from "./pages/AiVerse3";
 import AiVerse4 from "./pages/AiVerse4";
+import QRCodePage from "./pages/QRCode";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/ai-verse-2" element={<AiVerse2 />} />
         <Route path="/ai-verse-3" element={<AiVerse3 />} />
         <Route path="/ai-verse-4" element={<AiVerse4 />} />
+        <Route path="/qr" element={<QRCodePage />} />
       </Routes>
     </BrowserRouter>
   );

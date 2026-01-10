@@ -2,66 +2,83 @@
 import { motion } from "framer-motion";
 import { AIVERSE_DATA } from "./content";
 
-export default function AboutEvent() {
+export default function AboutSection() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
-      {/* Event Insight Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="mb-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm"
-      >
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-2xl">✨</span>
-          <h3 className="text-xl sm:text-2xl font-bold text-[#00F2FE]">
-            {AIVERSE_DATA.eventInsight.title}
+    <section className="section-container px-3 sm:px-6">
+      <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-start">
+        
+        {/* Left: About Text */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h3 className="text-orange-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2">
+            The Beginning
           </h3>
-        </div>
-        <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-          {AIVERSE_DATA.eventInsight.description}
-        </p>
-      </motion.div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
+            {AIVERSE_DATA.about.title}
+          </h2>
+          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+            {AIVERSE_DATA.about.description}
+          </p>
+          
+          {/* Event Insight Card */}
+          <div className="mt-6 sm:mt-8 p-4 sm:p-6 rounded-xl bg-white/5 border border-white/10">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-lg">✨</span>
+              <h4 className="text-orange-500 font-bold text-sm sm:text-base">
+                {AIVERSE_DATA.eventInsight.title}
+              </h4>
+            </div>
+            <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+              {AIVERSE_DATA.eventInsight.description}
+            </p>
+          </div>
+        </motion.div>
 
-      {/* Main About Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
-          {AIVERSE_DATA.about.title}
-        </h2>
-        <div className="h-1 w-20 bg-[#00F2FE] mx-auto rounded-full shadow-[0_0_15px_#00F2FE]" />
-      </motion.div>
+        {/* Right: Overview Points */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="space-y-4 sm:space-y-6"
+        >
+          {AIVERSE_DATA.overviewPoints.map((point, i) => (
+            <div 
+              key={i} 
+              className="p-4 sm:p-6 bg-white/5 rounded-xl border border-white/10 hover:border-orange-500/30 transition-all duration-300"
+            >
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="text-orange-500 font-black text-lg sm:text-xl opacity-50">
+                  0{i + 1}
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-sm sm:text-base mb-1 sm:mb-2">
+                    {point.title}
+                  </h4>
+                  <p className="text-gray-500 text-xs sm:text-sm">
+                    {point.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-white/60 text-center max-w-3xl mx-auto text-sm sm:text-base leading-relaxed mb-12"
-      >
-        {AIVERSE_DATA.about.description}
-      </motion.p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-        {AIVERSE_DATA.about.highlights.map((highlight, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 * index }}
-            className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#00F2FE]/30 transition-all"
-          >
-            <div className="w-2 h-2 rounded-full bg-[#00F2FE] shadow-[0_0_10px_#00F2FE]" />
-            <span className="text-white/80 text-sm">{highlight}</span>
-          </motion.div>
-        ))}
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 sm:gap-3 pt-2">
+            {AIVERSE_DATA.tags.map((tag, index) => (
+              <span
+                key={tag}
+                className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 text-white/70 text-[10px] sm:text-xs hover:border-orange-500/50 hover:text-orange-500 transition-all"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
