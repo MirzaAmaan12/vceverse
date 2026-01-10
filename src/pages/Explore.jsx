@@ -59,6 +59,7 @@ export default function Explore() {
 
   const menuItems = [
     { label: "Data Stargaze", path: "/data-stargaze", primary: false },
+    { label: "AI Verse", path: "/ai-verse", primary: false },
     { label: "AI Verse 2.0", path: "/ai-verse-2", primary: false },
     { label: "AI Verse 3.0", path: "/ai-verse-3", primary: false },
     { label: "AI Verse 4.0", path: "/ai-verse-4", primary: true },
