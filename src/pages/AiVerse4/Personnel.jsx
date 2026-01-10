@@ -9,9 +9,9 @@ const TEAM = [
 ];
 
 const WEBSITE_COORDINATORS = [
-  { name: "Mirza Amaanullah Baig", role: "Website Coordinator", image: amaanImg },
-  { name: "Mohammad Riyaz", role: "Website Coordinator", image: riyazImg },
-  { name: "Pothana Pardhu", role: "Website Coordinator", image: pardhuImg }
+   { name: "Pothana Pardhu", role: "Website Coordinator", image: pardhuImg },
+   { name: "Mirza Amaanullah Baig", role: "Website Coordinator", image: amaanImg },
+  { name: "Mohammad Riyaz", role: "Website Coordinator", image: riyazImg }
 ];
 
 export default function Personnel() {
