@@ -149,18 +149,18 @@ export default function Feedback() {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Name (optional)"
+                  placeholder="Name"
                   disabled={isSubmitting}
-                  className="bg-black/40 border border-white/10 p-3 rounded-xl text-white"
+                  className="bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none transition-colors"
                 />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="Email (optional)"
+                  placeholder="Email"
                   disabled={isSubmitting}
-                  className="bg-black/40 border border-white/10 p-3 rounded-xl text-white"
+                  className="bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none transition-colors"
                 />
               </div>
 
@@ -171,7 +171,7 @@ export default function Feedback() {
                 placeholder="Your feedback..."
                 rows="4"
                 disabled={isSubmitting}
-                className="bg-black/40 border border-white/10 p-3 rounded-xl text-white resize-none"
+                className="bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none resize-none transition-colors"
                 required
               />
 
