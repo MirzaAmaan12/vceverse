@@ -136,13 +136,15 @@ const FeaturedExplorePoster = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               {/* Register Button */}
-              <button
-                onClick={() => navigate("/ai-verse-4")}
+              <a
+                href="https://forms.gle/ft8J2rt7eSzYPm9N6"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 font-bold text-sm sm:text-base md:text-lg shadow-lg hover:shadow-cyan-400/50 transition-all flex items-center justify-center gap-2"
               >
                 <span>Register Now</span>
                 <span>→</span>
-              </button>
+              </a>
 
               {/* View Details Button */}
               <button

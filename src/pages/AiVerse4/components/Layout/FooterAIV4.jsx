@@ -17,9 +17,14 @@ export default function FooterAIV4() {
             <h2 className="text-xl sm:text-2xl md:text-4xl font-black italic uppercase mb-1 sm:mb-2">Ready to Enter the <span className="text-[#22D3EE]">Verse?</span></h2>
             <p className="text-white/50 uppercase tracking-wider sm:tracking-widest text-[10px] sm:text-xs font-bold">Experience the future of AI at Vaagdevi College.</p>
           </div>
-          <button className="bg-[#F0FF42] text-black px-6 sm:px-10 py-3 sm:py-4 rounded-full font-black uppercase tracking-tighter text-sm sm:text-base hover:bg-[#22D3EE] transition-all transform hover:scale-105 whitespace-nowrap">
+          <a 
+            href="https://forms.gle/ft8J2rt7eSzYPm9N6" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-[#F0FF42] text-black px-6 sm:px-10 py-3 sm:py-4 rounded-full font-black uppercase tracking-tighter text-sm sm:text-base hover:bg-[#22D3EE] transition-all transform hover:scale-105 whitespace-nowrap inline-block"
+          >
             Grab Your Pass
-          </button>
+          </a>
         </motion.div>
       </div>
 
