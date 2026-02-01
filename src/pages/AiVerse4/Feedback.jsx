@@ -4,6 +4,9 @@ import { supabase } from "../../supabase";
 
 export default function Feedback() {
   const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
     How_Was_Event: "",
     Liked_Most: "",
     suggestions: "",
@@ -44,10 +47,21 @@ export default function Feedback() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.How_Was_Event.trim() && !formData.Liked_Most.trim() && !formData.suggestions.trim()) {
+    if (!formData.message.trim()) {
       setSubmitStatus({
         type: "error",
-        message: "Please provide feedback in at least one field.",
+        message: "Please enter your feedback message.",
+      });
+      return;
+    }
+
+    if (
+      formData.email &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    ) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please enter a valid email address.",
       });
       return;
     }
@@ -58,6 +72,9 @@ export default function Feedback() {
     try {
       const { error } = await supabase.from("feedback").insert([
         {
+          name: formData.name.trim() || null,
+          email: formData.email.trim() || null,
+          message: formData.message.trim(),
           How_Was_Event: formData.How_Was_Event.trim() || null,
           Liked_Most: formData.Liked_Most.trim() || null,
           suggestions: formData.suggestions.trim() || null,
@@ -74,7 +91,7 @@ export default function Feedback() {
           message: "Thank you! Your feedback has been submitted successfully.",
         });
 
-        setFormData({ How_Was_Event: "", Liked_Most: "", suggestions: "", rating: 5 });
+        setFormData({ name: "", email: "", message: "", How_Was_Event: "", Liked_Most: "", suggestions: "", rating: 5 });
 
         setTimeout(() => {
           setSubmitStatus({ type: "", message: "" });
@@ -134,6 +151,41 @@ export default function Feedback() {
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Name"
+                  disabled={isSubmitting}
+                  className="bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none transition-colors"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email"
+                  disabled={isSubmitting}
+                  className="bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-white font-semibold mb-2">Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Your feedback..."
+                  rows="3"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none resize-none transition-colors"
+                  required
+                />
+              </div>
+
               <div>
                 <label className="block text-white font-semibold mb-2">How was the event?</label>
                 <textarea
