@@ -4,9 +4,10 @@ import { supabase } from "../../supabase";
 
 export default function Feedback() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
+    How_Was_Event: "",
+    Liked_Most: "",
+    suggestions: "",
+    rating: 5
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,21 +44,10 @@ export default function Feedback() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.message.trim()) {
+    if (!formData.How_Was_Event.trim() && !formData.Liked_Most.trim() && !formData.suggestions.trim()) {
       setSubmitStatus({
         type: "error",
-        message: "Please enter your feedback message.",
-      });
-      return;
-    }
-
-    if (
-      formData.email &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
-    ) {
-      setSubmitStatus({
-        type: "error",
-        message: "Please enter a valid email address.",
+        message: "Please provide feedback in at least one field.",
       });
       return;
     }
@@ -68,9 +58,10 @@ export default function Feedback() {
     try {
       const { error } = await supabase.from("feedback").insert([
         {
-          name: formData.name.trim() || null,
-          email: formData.email.trim() || null,
-          message: formData.message.trim()
+          How_Was_Event: formData.How_Was_Event.trim() || null,
+          Liked_Most: formData.Liked_Most.trim() || null,
+          suggestions: formData.suggestions.trim() || null,
+          rating: formData.rating
         }
       ]);
 
@@ -83,7 +74,7 @@ export default function Feedback() {
           message: "Thank you! Your feedback has been submitted successfully.",
         });
 
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ How_Was_Event: "", Liked_Most: "", suggestions: "", rating: 5 });
 
         setTimeout(() => {
           setSubmitStatus({ type: "", message: "" });
@@ -143,37 +134,65 @@ export default function Feedback() {
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
+              <div>
+                <label className="block text-white font-semibold mb-2">How was the event?</label>
+                <textarea
+                  name="How_Was_Event"
+                  value={formData.How_Was_Event}
                   onChange={handleInputChange}
-                  placeholder="Name"
+                  placeholder="Share your overall thoughts about AI VERSE 4.0..."
+                  rows="3"
                   disabled={isSubmitting}
-                  className="bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none transition-colors"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                  disabled={isSubmitting}
-                  className="bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none transition-colors"
+                  className="w-full bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none resize-none transition-colors"
                 />
               </div>
 
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="Your feedback..."
-                rows="4"
-                disabled={isSubmitting}
-                className="bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none resize-none transition-colors"
-                required
-              />
+              <div>
+                <label className="block text-white font-semibold mb-2">What did you like the most?</label>
+                <textarea
+                  name="Liked_Most"
+                  value={formData.Liked_Most}
+                  onChange={handleInputChange}
+                  placeholder="Tell us what stood out for you..."
+                  rows="3"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none resize-none transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-white font-semibold mb-2">Suggestions for improvement</label>
+                <textarea
+                  name="suggestions"
+                  value={formData.suggestions}
+                  onChange={handleInputChange}
+                  placeholder="Any ideas to make AI VERSE even better?..."
+                  rows="3"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#0a0a1a] border border-white/20 p-3 rounded-xl text-white placeholder:text-gray-500 focus:border-[#7C5CFF] focus:outline-none resize-none transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-white font-semibold mb-2">Rate your experience</label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <button
+                      key={num}
+                      type="button"
+                      onClick={() => setFormData((prev) => ({ ...prev, rating: num }))}
+                      disabled={isSubmitting}
+                      className={`py-2 px-4 rounded-xl font-bold transition-all ${
+                        formData.rating === num
+                          ? "bg-[#7C5CFF] text-white"
+                          : "bg-[#0a0a1a] border border-white/20 text-gray-300 hover:border-[#7C5CFF]"
+                      } disabled:opacity-50`}
+                    >
+                      {num}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
               <AnimatePresence>
                 {submitStatus.message && (
